@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="./css/loginOut.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" defer></script>
+    <style>
+        .error-message {
+            color: #ff4444;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .form-input.error input {
+            border-color: #ff4444;
+        }
+
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        #submitButton:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        .alert {
+            display: none;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 form-container">
+                <div class="col-lg-8 col-md-12 col-sm-9 col-xs-12 form-box text-center">
+                    <div class="logo mt-5 mb-3">
+                        <a href="./index.html">
+                            <img src="/img/logooo.png" width="150px" alt="Logo">
+                        </a>
+                    </div>
+                    <div class="heading mb-3">
+                        <h4>Create an account</h4>
+                    </div>
+                    <div class="alert alert-danger" id="errorAlert" role="alert"></div>
+                    <div class="alert alert-success" id="successAlert" role="alert"></div>
+                    <form id="signupForm" novalidate>
+                        <div class="form-input">
+                            <span><i class="fa fa-user"></i></span>
+                            <input type="text" id="flname" placeholder="Full Name" required minlength="2">
+                            <div class="error-message" id="flname-error"></div>
+                        </div>
+                        <div class="form-input">
+                            <span><i class="fa fa-envelope"></i></span>
+                            <input type="email" id="email" placeholder="Email Address" required>
+                            <div class="error-message" id="email-error"></div>
+                        </div>
+                        <div class="form-input">
+                            <span><i class="fa fa-lock"></i></span>
+                            <input type="password" id="pwd" placeholder="Password" required minlength="6">
+                            <div class="error-message" id="pwd-error"></div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-12 d-flex">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="cb1" required>
+                                    <label class="custom-control-label text-white" for="cb1">I agree to all terms &
+                                        conditions</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-left mb-3">
+                            <button type="submit" class="btn" id="submitButton">Register</button>
+                        </div>
+                        <div class="text-white mb-3">or register with</div>
+                        <div class="row mb-3">
+                            <div class="col-4">
+                                <a href="#" class="btn btn-block btn-social btn-facebook">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </div>
+                            <div class="col-4">
+                                <a href="#" class="btn btn-block btn-social btn-google">
+                                    <i class="fa fa-google"></i>
+                                </a>
+                            </div>
+                            <div class="col-4">
+                                <a href="#" class="btn btn-block btn-social btn-twitter">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="text-white">Already have an account?
+                            <a href="./index.html" class="login-link">Login here</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 d-none d-md-block image-container"></div>
+        </div>
+    </div>
+
+    <script>
+        // Form validation functions
+        function showError(inputId, message) {
+            const errorElement = document.getElementById(`${inputId}-error`);
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+            document.getElementById(inputId).parentElement.classList.add('error');
+        }
+
+        function clearError(inputId) {
+            const errorElement = document.getElementById(`${inputId}-error`);
+            errorElement.style.display = 'none';
+            document.getElementById(inputId).parentElement.classList.remove('error');
+        }
+
+        function validateForm() {
+            let isValid = true;
+            const fullName = document.getElementById('flname');
+            const email = document.getElementById('email');
+            const password = document.getElementById('pwd');
+            const terms = document.getElementById('cb1');
+
+            clearError('flname');
+            clearError('email');
+            clearError('pwd');
+
+            // Validate full name
+            if (!fullName.value.trim()) {
+                showError('flname', 'Full name is required');
+                isValid = false;
+            } else if (fullName.value.trim().length < 2) {
+                showError('flname', 'Full name must be at least 2 characters');
+                isValid = false;
+            }
+
+            // Validate email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email.value.trim()) {
+                showError('email', 'Email is required');
+                isValid = false;
+            } else if (!emailRegex.test(email.value.trim())) {
+                showError('email', 'Please enter a valid email address');
+                isValid = false;
+            }
+
+            // Validate password
+            if (!password.value) {
+                showError('pwd', 'Password is required');
+                isValid = false;
+            } else if (password.value.length < 6) {
+                showError('pwd', 'Password must be at least 6 characters');
+                isValid = false;
+            }
+
+            // Validate terms
+            if (!terms.checked) {
+                showError('cb1', 'You must agree to the terms and conditions');
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        // Form submission handler
+        document.getElementById("signupForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            document.getElementById('errorAlert').style.display = 'none';
+            document.getElementById('successAlert').style.display = 'none';
+
+            if (!validateForm()) {
+                return;
+            }
+
+            const submitButton = document.getElementById('submitButton');
+            const form = document.getElementById('signupForm');
+
+            try {
+                submitButton.disabled = true;
+                form.classList.add('loading');
+                submitButton.textContent = 'Registering...';
+
+                const fullName = document.getElementById("flname").value.trim();
+                const email = document.getElementById("email").value.trim();
+                const password = document.getElementById("pwd").value;
+
+                const response = await fetch('http://localhost:8081/api/users/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username: fullName,
+                        email: email,
+                        password: password
+                    })
+                });
+
+                const responseText = await response.text();
+                console.log('Response Text:', responseText);
+
+                let data;
+                try {
+                    data = JSON.parse(responseText);
+                } catch (error) {
+                    // If parsing fails, use the response text as the error message
+                    data = { message: responseText };
+                }
+
+                if (!response.ok) {
+                    throw new Error(data.message || 'Registration failed');
+                }
+
+                // Show success message
+                const successAlert = document.getElementById('successAlert');
+                successAlert.textContent = data.message || "Registration successful!";
+                successAlert.style.display = 'block';
+
+                setTimeout(() => {
+                    window.location.href = "index.html";
+                }, 2000);
+
+            } catch (error) {
+                const errorAlert = document.getElementById('errorAlert');
+                errorAlert.textContent = error.message || "An error occurred during registration";
+                errorAlert.style.display = 'block';
+
+                console.error('Registration error:', error);
+            } finally {
+                submitButton.disabled = false;
+                form.classList.remove('loading');
+                submitButton.textContent = 'Register';
+            }
+        });
+    </script>
+</body>
+
+</html>
