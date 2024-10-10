@@ -1,5 +1,5 @@
-package rw.transport.vubaride.controller;
 
+package rw.transport.vubaride.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
