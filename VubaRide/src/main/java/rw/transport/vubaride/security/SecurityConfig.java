@@ -19,16 +19,23 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .cors().and()
-            .csrf().disable()
-            .addFilterBefore(corsFilter, UsernamePasswordAuthenticationFilter.class)
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/users/signup", "/api/auth/**").permitAll()
-                .anyRequest().authenticated()
-            );
-        
-        return http.build();
+                .cors(cors -> cors.disable()) // Enable CORS using the injected CorsFilter or you can use cors
+                                              // configuration from HttpSecurity
+                .csrf(csrf -> csrf.disable()) // Disable CSRF protection
+                .addFilterBefore(corsFilter, UsernamePasswordAuthenticationFilter.class) // Add the CorsFilter before
+                                                                                         // authentication
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/api/users/signup", "/api/users/login", "/api/auth/**").permitAll() // Public
+                                                                                                              // access
+                                                                                                              // to
+                                                                                                              // signup
+                                                                                                              // and
+                        // authentication endpoints
+                        .anyRequest().authenticated() // All other requests require authentication
+                );
+
+        return http.build(); // Build the SecurityFilterChain
     }
 }

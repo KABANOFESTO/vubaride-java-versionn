@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap Gallery - Support Admin Dashboard</title>
+
+    <!-- Meta -->
+    <meta name="description" content="Marketplace for Bootstrap Admin Dashboards" />
+    <meta name="author" content="Bootstrap Gallery" />
+    <link rel="canonical" href="https://www.bootstrap.gallery/">
+    <meta property="og:url" content="https://www.bootstrap.gallery">
+    <meta property="og:title" content="Admin Templates - Dashboard Templates | Bootstrap Gallery">
+    <meta property="og:description" content="Marketplace for Bootstrap Admin Dashboards">
+    <meta property="og:type" content="Website">
+    <meta property="og:site_name" content="Bootstrap Gallery">
+    <link rel="shortcut icon" href="./admin/assets/images/favicon.svg" />
+
+    <!-- *************
+			************ CSS Files *************
+		************* -->
+    <!-- Icomoon Font Icons css -->
+    <link rel="stylesheet" href="./admin/assets/fonts/icomoon/style.css" />
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="./admin/assets/css/main.min.css" />
+
+    <!-- *************
+			************ Vendor Css Files *************
+		************ -->
+
+    <!-- Scrollbar CSS -->
+    <link rel="stylesheet" href="./admin/assets/vendor/overlay-scroll/OverlayScrollbars.min.css" />
+    <script src="./js/auth.js" defer></script>
+</head>
+
+<body>
+    <!-- Page wrapper start -->
+    <div class="page-wrapper">
+
+        <!-- App container starts -->
+        <div class="app-container">
+
+            <!-- App header starts -->
+            <div class="app-header d-flex align-items-center">
+
+                <!-- Container starts -->
+                <div class="container">
+
+                    <!-- Row starts -->
+                    <div class="row gx-3">
+                        <div class="col-md-3 col-2">
+
+                            <!-- App brand starts -->
+                            <div class="app-brand">
+                                <a href="index.html" class="d-lg-block d-none">
+                                    <h3 class="logo">VubaRide</h3>
+                                </a>
+                                <a href="index.html" class="d-lg-none d-md-block">
+                                    <img src="./admin/assets/images/logo-sm.svg" class="logo" alt="Bootstrap Gallery" />
+                                </a>
+                            </div>
+                            <!-- App brand ends -->
+
+                        </div>
+
+                        <div class="col-md-9 col-10">
+
+                            <!-- App header actions start -->
+                            <div class="header-actions col">
+
+                                <!-- Search container start -->
+                                <div class="search-container d-none d-lg-block">
+                                    <input type="text" id="search" class="form-control" placeholder="Search" />
+                                    <i class="icon-search"></i>
+                                </div>
+                                <!-- Search container end -->
+
+                                <div class="d-sm-flex d-none align-items-center gap-2">
+                                    <div class="dropdown">
+                                        <a class="dropdown-toggle header-action-icon" href="#!" role="button"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="icon-warning fs-4 lh-1 text-white"></i>
+                                            <span class="count">7</span>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-md">
+                                            <h5 class="fw-semibold px-3 py-2 text-primary">
+                                                Notifications
+                                            </h5>
+                                            <div class="dropdown-item">
+                                                <div class="d-flex py-2">
+                                                    <div class="icons-box md bg-success rounded-circle me-3">
+                                                        <i class="icon-shopping-bag text-white fs-4"></i>
+                                                    </div>
+                                                    <div class="m-0">
+                                                        <h6 class="mb-1 fw-semibold">Mr.KABANO Festo</h6>
+                                                        <p class="mb-1 text-secondary">
+                                                            You have new order.
+                                                        </p>
+                                                        <p class="small m-0 text-secondary">
+                                                            30 mins ago
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="dropdown-item">
+                                                <div class="d-flex py-2">
+                                                    <div class="icons-box md bg-danger rounded-circle me-3">
+                                                        <i class="icon-alert-triangle text-white fs-4"></i>
+                                                    </div>
+                                                    <div class="m-0">
+                                                        <h6 class="mb-1 fw-semibold">Donovan Stuart</h6>
+                                                        <p class="mb-2">Membership has been expired.</p>
+                                                        <p class="small m-0 text-secondary">2 days ago</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="dropdown-item">
+                                                <div class="d-flex py-2">
+                                                    <div class="icons-box md bg-warning rounded-circle me-3">
+                                                        <i class="icon-shopping-cart text-white fs-4"></i>
+                                                    </div>
+                                                    <div class="m-0">
+                                                        <h6 class="mb-1 fw-semibold">Roscoe Richards</h6>
+                                                        <p class="mb-2">Payment pending. Pay now.</p>
+                                                        <p class="small m-0 text-secondary">3 days ago</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="d-grid mx-3 my-1">
+                                                <a href="javascript:void(0)" class="btn btn-outline-primary">View
+                                                    all</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown">
+                                        <a class="dropdown-toggle header-action-icon" href="#!" role="button"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="icon-drafts fs-4 lh-1 text-white"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-md">
+                                            <h5 class="fw-semibold px-3 py-2 text-primary">
+                                                Messages
+                                            </h5>
+                                            <div class="dropdown-item">
+                                                <div class="d-flex py-2">
+                                                    <img src="./admin/assets/images/user3.png"
+                                                        class="img-3x me-3 rounded-5" alt="Admin Theme" />
+                                                    <div class="m-0">
+                                                        <h6 class="mb-1 fw-semibold">Angelia Payne</h6>
+                                                        <p class="mb-1 text-secondary">
+                                                            Membership has been ended.
+                                                        </p>
+                                                        <p class="small m-0 text-secondary">
+                                                            Today, 07:30pm
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="dropdown-item">
+                                                <div class="d-flex py-2">
+                                                    <img src="./admin/assets/images/user1.png"
+                                                        class="img-3x me-3 rounded-5" alt="Admin Theme" />
+                                                    <div class="m-0">
+                                                        <h6 class="mb-1 fw-semibold">Clyde Fowler</h6>
+                                                        <p class="mb-1 text-secondary">
+                                                            Congratulate, James for new job.
+                                                        </p>
+                                                        <p class="small m-0 text-secondary">
+                                                            Today, 08:00pm
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="dropdown-item">
+                                                <div class="d-flex py-2">
+                                                    <img src="./admin/assets/images/user4.png"
+                                                        class="img-3x me-3 rounded-5" alt="Admin Theme" />
+                                                    <div class="m-0">
+                                                        <h6 class="mb-1 fw-semibold">Sophie Michiels</h6>
+                                                        <p class="mb-2 text-secondary">
+                                                            Lewis added new schedule release.
+                                                        </p>
+                                                        <p class="small m-0 text-secondary">
+                                                            Today, 09:30pm
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="d-grid mx-3 my-1">
+                                                <a href="javascript:void(0)" class="btn btn-outline-primary">View
+                                                    all</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown ms-3">
+                                    <a id="userSettings"
+                                        class="dropdown-toggle d-flex py-2 align-items-center text-decoration-none"
+                                        href="#!" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img src="./admin/assets/images/pasport.jpeg" class="rounded-2 img-3x"
+                                            alt="Bootstrap Gallery" />
+                                        <div class="ms-2 text-truncate d-lg-block d-none text-white">
+                                            <span class="d-flex opacity-50 small">Admin</span>
+                                            <span>KABANO Festo</span>
+                                        </div>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <div class="header-action-links">
+                                            <a class="dropdown-item" href="profile.html"><i
+                                                    class="icon-user border border-primary text-primary"></i>Profile</a>
+                                            <a class="dropdown-item" href="settings.html"><i
+                                                    class="icon-settings border border-danger text-danger"></i>Settings</a>
+                                            <a class="dropdown-item" href="widgets.html"><i
+                                                    class="icon-box border border-info text-info"></i>Widgets</a>
+                                        </div>
+                                        <div class="mx-3 mt-2 d-grid">
+                                            <a href="index.html" class="btn btn-outline-danger">Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Toggle Menu starts -->
+                                <button class="btn btn-warning btn-sm ms-3 d-lg-none d-md-block" type="button"
+                                    data-bs-toggle="offcanvas" data-bs-target="#MobileMenu">
+                                    <i class="icon-menu"></i>
+                                </button>
+                                <!-- Toggle Menu ends -->
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <!-- Row ends -->
+
+                </div>
+                <!-- Container ends -->
+
+            </div>
+            <!-- App header ends -->
+
+            <!-- App navbar starts -->
+            <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <div class="offcanvas offcanvas-end" id="MobileMenu">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title semibold">Navigation</h5>
+                            <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="offcanvas">
+                                <i class="icon-clear"></i>
+                            </button>
+                        </div>
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item dropdown active-link">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="icon-stacked_line_chart"></i> Dashboards
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item current-page" href="adminDash.html">
+                                            <span>Analytics</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="reports.html">
+                                            <span>Reports</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="icon-add_task"></i>Tickets
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="all-tickets.html">
+                                            <span>All Tickets</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="open-tickets.html"><span>Open Tickets</span></a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="pending-tickets.html"><span>Pending
+                                                Tickets</span></a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="closed-tickets.html"><span>Closed
+                                                Tickets</span></a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="solved-tickets.html"><span>Solved
+                                                Tickets</span></a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="clients.html"><i class="icon-supervised_user_circle"></i>
+                                    Clients
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="agents.html">
+                                    <i class="icon-support_agent"></i>Agents
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="icon-package"></i>Pages
+                                </a>
+                                <ul class="dropdown-menu dropdown-megamenu">
+                                    <li>
+                                        <a class="dropdown-item" href="agent-profile.html">
+                                            <span>Agent Profile</span></a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="starter-page.html">
+                                            <span>Starter Page</span></a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="client-list.html">
+                                            <span>Client List</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="create-invoice.html">
+                                            <span>Create Invoice</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="invoice.html">
+                                            <span>Invoice Details</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="invoice-list.html">
+                                            <span>Invoice List</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="faq.html">
+                                            <span>FAQ</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="contact-us.html">
+                                            <span>Contact Us</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="notifications.html">
+                                            <span>Notifications</span></a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="subscribers.html">
+                                            <span>Subscribers</span></a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="placeholder.html">
+                                            <span>Placeholder</span></a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="account-settings.html">
+                                            <span>Account Settings</span></a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="icon-login"></i>Login
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li>
+                                        <a class="dropdown-item" href="login.html">
+                                            <span>Login</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="signup.html">
+                                            <span>Signup</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="forgot-password.html">
+                                            <span>Forgot Password</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="page-not-found.html">
+                                            <span>Page Not Found</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="maintenance.html">
+                                            <span>Maintenance</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- App Navbar ends -->
+
+            <!-- App body starts -->
+            <div class="app-body">
+
+                <!-- Container starts -->
+                <div class="container">
+
+                    <!-- Row start -->
+                    <div class="row gx-3">
+                        <div class="col-12 col-xl-6">
+                            <!-- Breadcrumb start -->
+                            <ol class="breadcrumb mb-3">
+                                <li class="breadcrumb-item">
+                                    <i class="icon-house_siding lh-1"></i>
+                                    <a href="adminDash.html" class="text-decoration-none">Home</a>
+                                </li>
+                                <li class="breadcrumb-item">Dashboards</li>
+                                <li class="breadcrumb-item">Analytics</li>
+                            </ol>
+                            <!-- Breadcrumb end -->
+                        </div>
+                    </div>
+                    <!-- Row end -->
+
+                    <!-- Row start -->
+                    <div class="row gx-3">
+                        <div class="col-xl-6 col-sm-12 col-12">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <!-- Row start -->
+                                    <div class="row">
+                                        <div class="col-sm-8 col-12">
+                                            <h3 class="mb-3">Welcome To Admin Page! 🎉</h3>
+                                            <p class="w-50">
+                                                You have resolved
+                                                <span class="text-success fw-bold">85%</span> more
+                                                tickets than last year.
+                                            </p>
+                                            <div id="tickets"></div>
+                                        </div>
+                                        <div class="col-sm-4 col-12">
+                                            <div class="text-end">
+                                                <img src="./admin/assets/images/sales.svg" class="img-150"
+                                                    alt="Bootstrap Gallery" />
+                                            </div>
+                                            <div class="mt-5 d-flex flex-wrap gap-3">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="icons-box md bg-info rounded-3 me-3">
+                                                        <i class="icon-add_task text-white fs-4"></i>
+                                                    </div>
+                                                    <div class="m-0">
+                                                        <h3 class="m-0 fw-semibold">960</h3>
+                                                        <p class="m-0 text-secondary">Resolved in 2024</p>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="icons-box md bg-danger rounded-3 me-3">
+                                                        <i class="icon-add_task text-white fs-4"></i>
+                                                    </div>
+                                                    <div class="m-0">
+                                                        <h3 class="m-0 fw-semibold">630</h3>
+                                                        <p class="m-0 text-secondary">Resolved in 2023</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Row end -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-sm-6 col-12">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title">Calls</h5>
+                                    <div id="calls"></div>
+                                </div>
+                            </div>
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <div class="d-flex flex-row">
+                                        <div class="d-flex align-items-center">
+                                            <div class="border border-info rounded-4 icons-box md">
+                                                <i class="icon-support_agent text-info fs-3"></i>
+                                            </div>
+                                            <div class="ms-2">
+                                                <h3 class="m-0">49</h3>
+                                                <p class="m-0 text-secondary">Agents Online</p>
+                                            </div>
+                                        </div>
+                                        <div class="ms-auto">
+                                            <div id="sparkline1"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-sm-6 col-12">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title">Tickets Resolved</h5>
+                                    <div id="callsByCountry" class="auto-align-graph"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Row end -->
+
+                    <!-- Row start -->
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Recent Bookings</h5>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Booking ID</th>
+                                        <th>Customer</th>
+                                        <th>Route</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>BK001</td>
+                                        <td>John Doe</td>
+                                        <td>City A to City B</td>
+                                        <td>2024-10-15</td>
+                                        <td><span class="badge bg-success">Confirmed</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>BK002</td>
+                                        <td>Jane Smith</td>
+                                        <td>City B to City C</td>
+                                        <td>2024-10-16</td>
+                                        <td><span class="badge bg-warning">Pending</span></td>
+                                    </tr>
+                                    <!-- Add more rows as needed -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- USSD Monitoring -->
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">USSD Monitoring</h5>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6>Active Sessions</h6>
+                                    <h2>127</h2>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6>USSD System Health</h6>
+                                    <div id="ussdHealthGauge" style="height: 200px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Main content ends -->
+            </div>
+        </div>
+    </div>
+    <!-- Row end -->
+
+    <!-- Row start -->
+    <div class="row gx-3">
+        <div class="col-12">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <!-- Row start -->
+                    <div class="row g-4">
+                        <div class="px-0 border-end col-xl-3 col-sm-6">
+                            <div class="text-center">
+                                <p class="m-0 small">Gross Profit</p>
+                                <h3 class="my-2">75%</h3>
+                                <p class="m-0 small">
+                                    <span class="badge bg-danger me-1">
+                                        <i class="bi bi-arrow-down-left-square"></i>
+                                        1.99%</span>
+                                    for Last month
+                                </p>
+                            </div>
+                        </div>
+                        <div class="px-0 border-end col-xl-3 col-sm-6">
+                            <div class="text-center">
+                                <p class="m-0 small">Opex Ratio</p>
+                                <h3 class="my-2">62%</h3>
+                                <p class="m-0 small">
+                                    <span class="badge bg-danger me-1">
+                                        <i class="bi bi-arrow-up-right-square"></i>
+                                        1.69%</span>
+                                    for Last month
+                                </p>
+                            </div>
+                        </div>
+                        <div class="px-0 border-end col-xl-3 col-sm-6">
+                            <div class="text-center">
+                                <p class="m-0 small">
+                                    Operating Profit
+                                </p>
+                                <h3 class="my-2">48%</h3>
+                                <p class="m-0 small">
+                                    <span class="badge bg-danger me-1">
+                                        <i class="bi bi-arrow-up-right-square"></i>
+                                        2.9%</span>
+                                    for Last month
+                                </p>
+                            </div>
+                        </div>
+                        <div class="px-0 col-xl-3 col-sm-6">
+                            <div class="text-center">
+                                <p class="m-0 small">Net Profit</p>
+                                <h3 class="my-2">32%</h3>
+                                <p class="m-0 small">
+                                    <span class="badge bg-dark me-1">
+                                        <i class="bi bi-arrow-up-right-square"></i>
+                                        18.5%</span>
+                                    for Last month
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Row end -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Row end -->
+
+    <!-- Row start -->
+    <div class="row gx-3">
+        <div class="col-lg-12 col-12">
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5 class="card-title">Tasks</h5>
+                </div>
+                <div class="card-body">
+                    <div id="tasks"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Row end -->
+
+    <!-- Row start -->
+    <div class="row gx-3">
+        <div class="col-lg-6 col-12">
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5 class="card-title">Priority</h5>
+                </div>
+                <div class="card-body">
+                    <div id="ticketsData"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-12">
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5 class="card-title">Avg. Response Time</h5>
+                </div>
+                <div class="card-body">
+                    <div id="avgTimeData"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Row end -->
+
+    <!-- Row start -->
+    <div class="row gx-3">
+        <div class="col-sm-3 col-12">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="d-flex mb-2">
+                        <div class="icons-box md bg-primary rounded-5 me-3">
+                            <i class="icon-add_task fs-4 text-white"></i>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <h2 class="m-0 lh-1">18</h2>
+                            <p class="m-0 opacity-50">Tickets</p>
+                        </div>
+                    </div>
+                    <div class="m-0">
+                        <div class="progress thin mb-2">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 60%"
+                                aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <p class="m-0 small fw-light opacity-75">60 percent completed.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3 col-12">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="d-flex mb-2">
+                        <div class="icons-box md bg-info rounded-5 me-3">
+                            <i class="icon-add_task fs-4 text-white"></i>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <h2 class="m-0 lh-1">09</h2>
+                            <p class="m-0 opacity-50">InProgress</p>
+                        </div>
+                    </div>
+                    <div class="m-0">
+                        <div class="progress thin mb-2">
+                            <div class="progress-bar bg-info" role="progressbar" style="width: 70%" aria-valuenow="70"
+                                aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <p class="m-0 small fw-light opacity-75">70 percent completed.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3 col-12">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="d-flex mb-2">
+                        <div class="icons-box md bg-danger rounded-5 me-3">
+                            <i class="icon-add_task fs-4 text-white"></i>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <h2 class="m-0 lh-1">07</h2>
+                            <p class="m-0 opacity-50">On Hold</p>
+                        </div>
+                    </div>
+                    <div class="m-0">
+                        <div class="progress thin mb-2">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 80%" aria-valuenow="80"
+                                aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <p class="m-0 small fw-light opacity-75">80 percent completed.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3 col-12">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="d-flex mb-2">
+                        <div class="icons-box md bg-success rounded-5 me-3">
+                            <i class="icon-add_task fs-4 text-white"></i>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <h2 class="m-0 lh-1">45</h2>
+                            <p class="m-0 opacity-50">Completed</p>
+                        </div>
+                    </div>
+                    <div class="m-0">
+                        <div class="progress thin mb-2">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 90%"
+                                aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <p class="m-0 small fw-light opacity-75">90 percent completed.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row gx-3">
+        <div class="col-lg-3 col-sm-6 col-12">
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5 class="card-title">Today's Tickets</h5>
+                </div>
+                <div class="card-body">
+                    <i class="icon-stacked_line_chart display-3 opacity-25 position-absolute end-0 top-0 me-3"></i>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Completed</span>
+                        <span class="fw-bold">50%</span>
+                    </div>
+                    <div class="progress small">
+                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50"
+                            aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-6 col-12">
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5 class="card-title">New</h5>
+                </div>
+                <div class="card-body">
+                    <i class="icon-stacked_line_chart display-3 opacity-25 position-absolute end-0 top-0 me-3"></i>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Assigned</span>
+                        <span class="fw-bold">70%</span>
+                    </div>
+                    <div class="progress small">
+                        <div class="progress-bar bg-info" role="progressbar" style="width: 70%" aria-valuenow="70"
+                            aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-6 col-12">
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5 class="card-title">Closed</h5>
+                </div>
+                <div class="card-body">
+                    <i class="icon-stacked_line_chart display-3 opacity-25 position-absolute end-0 top-0 me-3"></i>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Overall</span>
+                        <span class="fw-bold">90%</span>
+                    </div>
+                    <div class="progress small">
+                        <div class="progress-bar bg-info" role="progressbar" style="width: 90%" aria-valuenow="90"
+                            aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-6 col-12">
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5 class="card-title">Completed</h5>
+                </div>
+                <div class="card-body">
+                    <i class="icon-stacked_line_chart display-3 opacity-25 position-absolute end-0 top-0 me-3"></i>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Done</span>
+                        <span class="fw-bold">100%</span>
+                    </div>
+                    <div class="progress small">
+                        <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100"
+                            aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Row end -->
+
+    </div>
+    <!-- Container ends -->
+
+    </div>
+    <!-- App body ends -->
+
+    <!-- App footer start -->
+    <div class="app-footer">
+        <div class="container">
+            <span>© Bootstrap Gallery 2024</span>
+        </div>
+    </div>
+    <!-- App footer end -->
+
+    </div>
+    <!-- App container ends -->
+
+    </div>
+    <!-- Page wrapper end -->
+
+    <!-- *************
+			************ JavaScript Files *************
+		************* -->
+    <!-- Required jQuery first, then Bootstrap Bundle JS -->
+    <script src="./admin/assets/js/jquery.min.js"></script>
+    <script src="./admin/assets/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            localStorage.removeItem('authToken');
+            localStorage.removeItem('loginedUser');
+            window.location.href = './index.html';
+        });
+    </script>
+
+    <!-- *************
+			************ Vendor Js Files *************
+		************* -->
+
+    <!-- Overlay Scroll JS -->
+    <script src="./admin/assets/vendor/overlay-scroll/jquery.overlayScrollbars.min.js"></script>
+    <script src="./admin/assets/vendor/overlay-scroll/custom-scrollbar.js"></script>
+
+    <!-- Apex Charts -->
+    <script src="./admin/assets/vendor/apex/apexcharts.min.js"></script>
+    <script src="./admin/assets/vendor/apex/custom/home/tasks.js"></script>
+    <script src="./admin/assets/vendor/apex/custom/home/ticketsData.js"></script>
+    <script src="./admin/assets/vendor/apex/custom/home/avgTimeData.js"></script>
+    <script src="./admin/assets/vendor/apex/custom/home/tickets.js"></script>
+    <script src="./admin/assets/vendor/apex/custom/home/calls.js"></script>
+    <script src="./admin/assets/vendor/apex/custom/home/callsByCountry.js"></script>
+    <script src="./admin/assets/vendor/apex/custom/home/sparkline.js"></script>
+
+
+    <!-- Custom JS files -->
+    <script src="./admin/assets/js/custom.js"></script>
+</body>
+
+</html>

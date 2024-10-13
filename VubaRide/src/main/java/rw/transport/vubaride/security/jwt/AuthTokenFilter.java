@@ -28,7 +28,7 @@ import java.io.IOException;
 public class AuthTokenFilter extends OncePerRequestFilter {
 
     @Autowired
-    private JwtUtils jwtUtils;
+    private JwtUtil jwtUtils;
 
     @Autowired
     private VubaRideDetailsService userDetailsService;

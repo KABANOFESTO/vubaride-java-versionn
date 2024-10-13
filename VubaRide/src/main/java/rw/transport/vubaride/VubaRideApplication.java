@@ -1,4 +1,4 @@
-package rw.transport.vubaride; 
+package rw.transport.vubaride;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

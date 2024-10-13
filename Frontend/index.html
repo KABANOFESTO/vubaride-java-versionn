@@ -168,6 +168,7 @@
             submitButton.disabled = true;
             submitButton.textContent = 'Logging in...';
 
+            // Login API call
             axios.post('http://localhost:8081/api/users/login', {
                 email: email,
                 password: password
@@ -177,19 +178,51 @@
                 }
             })
                 .then(response => {
+                    console.log('Response data:', response.data);
                     if (response.status === 200) {
-                        localStorage.setItem("loginedUser", JSON.stringify(response.data));
-                        window.location.href = "./dash1.html"; // Redirect to dashboard
+                        const { message, token } = response.data;
+
+                        if (token) {
+                            // Store token in localStorage
+                            localStorage.setItem("authToken", token);
+
+                            // Decode the token to get user information
+                            const base64Url = token.split('.')[1];
+                            const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                            const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+                                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                            }).join(''));
+
+                            const user = JSON.parse(jsonPayload);
+
+                            // Store user details in localStorage
+                            localStorage.setItem("loginedUser", JSON.stringify({
+                                email: user.sub,
+                                role: user.role
+                            }));
+
+                            // Check user's role and redirect accordingly
+                            if (user.role === 'ADMIN') {
+                                window.location.href = "./adminDash.html"; // Redirect to admin dashboard
+                            } else {
+                                window.location.href = "./dash1.html"; // Redirect to user dashboard
+                            }
+                        } else {
+                            throw new Error('Token not defined in the response.');
+                        }
                     }
                 })
                 .catch(error => {
                     console.error('Error:', error.response ? error.response.data : error.message);
+                    console.log('Full error object:', error);
+
                     const errorAlert = document.getElementById('errorAlert');
                     if (error.response && error.response.status === 401) {
                         errorAlert.textContent = "Invalid email or password. Please try again.";
                     } else {
-                        errorAlert.textContent = "An error occurred while logging in. Please try again.";
+                        errorAlert.textContent = error.message || "An error occurred while logging in. Please try again.";
                     }
+
                     errorAlert.style.display = 'block';
                 })
                 .finally(() => {
@@ -206,7 +239,6 @@
             });
         });
     </script>
-
 </body>
 
 </html>
