@@ -9,11 +9,6 @@ import lombok.Setter;
 import rw.transport.vubaride.model.User;
 
 import java.util.Collection;
-
-/**
- * VubaDetails implements UserDetails for Spring Security.
- * Corrected version with roles-related functionality removed.
- */
 @Getter
 @Setter
 @AllArgsConstructor
@@ -23,7 +18,7 @@ public class VubaDetails implements UserDetails {
     private Long id;
     private String email;
     private String password;
-    private Collection<GrantedAuthority> authorities; // Authority management, roles removed
+    private Collection<GrantedAuthority> authorities; 
 
     /**
      * Builds VubaDetails from the given User model.
