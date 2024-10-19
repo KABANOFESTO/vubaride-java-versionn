@@ -1,5 +1,6 @@
 package rw.transport.vubaride.security;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
@@ -13,55 +14,57 @@ import java.util.List;
 
 @Configuration
 public class CorsConfig {
-    private static final long MAX_AGE = 3600L;
+    private static final Long MAX_AGE = 3600L;
+
+    @Value("${app.cors.allowed-origins:http://localhost:5173,http://127.0.0.1:5501,http://localhost:3000}")
+    private List<String> allowedOrigins;
 
     @Bean
     public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
-        
+
         // Allow credentials (session cookies, etc.)
         config.setAllowCredentials(true);
-        
-        // Allow multiple origins
-        config.setAllowedOrigins(List.of(
-            "http://localhost:5173",  // Frontend server (React, Vue, etc.)
-            "http://127.0.0.1:5501"   // Local development server
+
+        // Set allowed origins from configuration
+        allowedOrigins.forEach(config::addAllowedOrigin);
+
+        // Allow specific headers that are necessary for your application
+        config.setAllowedHeaders(Arrays.asList(
+                HttpHeaders.AUTHORIZATION,
+                HttpHeaders.CONTENT_TYPE,
+                HttpHeaders.ACCEPT,
+                HttpHeaders.ORIGIN,
+                HttpHeaders.ACCESS_CONTROL_REQUEST_METHOD,
+                HttpHeaders.ACCESS_CONTROL_REQUEST_HEADERS,
+                "X-Requested-With"
         ));
-        
-        // Allow all headers that might be used in requests
-        config.setAllowedHeaders(List.of(
-            HttpHeaders.AUTHORIZATION, // JWT Token in Authorization header
-            HttpHeaders.CONTENT_TYPE,  // Content-Type for POST/PUT requests
-            HttpHeaders.ACCEPT,        // Accept header for responses
-            HttpHeaders.ORIGIN,        // Origin header for requests
-            HttpHeaders.ACCESS_CONTROL_REQUEST_METHOD, // Preflight method type
-            HttpHeaders.ACCESS_CONTROL_REQUEST_HEADERS, // Preflight request headers
-            "X-Requested-With"         // Used in AJAX requests
+
+        // Allow specific HTTP methods
+        config.setAllowedMethods(Arrays.asList(
+                HttpMethod.GET.name(),
+                HttpMethod.POST.name(),
+                HttpMethod.PUT.name(),
+                HttpMethod.DELETE.name(),
+                HttpMethod.OPTIONS.name(),
+                HttpMethod.PATCH.name()
         ));
-        
-        // Allow common HTTP methods
-        config.setAllowedMethods(List.of(
-            HttpMethod.GET.name(),
-            HttpMethod.POST.name(),
-            HttpMethod.PUT.name(),
-            HttpMethod.DELETE.name(),
-            HttpMethod.OPTIONS.name(),
-            HttpMethod.PATCH.name()
+
+        // Expose necessary headers to the client
+        config.setExposedHeaders(Arrays.asList(
+                HttpHeaders.AUTHORIZATION,
+                HttpHeaders.CONTENT_DISPOSITION
         ));
-        
-        // Expose specific headers to the client (for custom headers or tokens)
-        config.setExposedHeaders(List.of(
-            HttpHeaders.AUTHORIZATION,  // Expose JWT token
-            HttpHeaders.CONTENT_DISPOSITION // For file downloads
-        ));
-        
-        // Cache the preflight response for 1 hour
+
+        // Cache preflight response
         config.setMaxAge(MAX_AGE);
-        
-        // Apply the configuration to all routes
-        source.registerCorsConfiguration("/**", config);
-        
+
+        // Apply configuration to all endpoints
+        source.registerCorsConfiguration("/api/**", config);
+        source.registerCorsConfiguration("/auth/**", config);
+        source.registerCorsConfiguration("/public/**", config);
+
         return new CorsFilter(source);
     }
 }

@@ -1,4 +1,4 @@
-package rw.transport.vubaride;
+package rw.transport.VubaRide;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,7 +12,8 @@ public class VubaRideApplicationTests {
 
     @Test
     void contextLoads() {
-        // This test will load the application context and check if everything is wired correctly
+        // This test will load the application context and check if everything is wired
+        // correctly
         logger.info("Application context loaded successfully.");
     }
 }

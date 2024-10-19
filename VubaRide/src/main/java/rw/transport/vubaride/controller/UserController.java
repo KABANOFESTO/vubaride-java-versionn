@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtException;
 import rw.transport.vubaride.model.Role;
 import rw.transport.vubaride.model.User;
 import rw.transport.vubaride.security.jwt.JwtUtil;
@@ -82,21 +83,31 @@ public class UserController {
 
     // Endpoint to fetch all users
     @GetMapping("/all")
-    public ResponseEntity<?> getAllUsers(@RequestHeader("Authorization") String token) {
+    public ResponseEntity<?> getAllUsers(@RequestHeader("Authorization") String authorizationHeader) {
         try {
-            String jwtToken = token.substring(7); // Remove "Bearer " from the token
+            // Remove "Bearer " from the token
+            String jwtToken = authorizationHeader.substring(7);
             Claims claims = jwtUtil.extractClaims(jwtToken);
-            String role = claims.get("role", String.class);
 
-            if (!role.equals(Role.ADMIN.name())) {
-                return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access denied");
+            // Extract the user's role from the token
+            String userRole = claims.get("role", String.class);
+
+            // Check if the user has ADMIN privileges
+            if (!Role.ADMIN.name().equals(userRole)) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access denied: Insufficient privileges");
             }
 
+            // Fetch the list of users
             List<User> users = userService.getUsers();
             return ResponseEntity.ok(users);
+
+        } catch (JwtException e) {
+            // Handle JWT-specific exceptions
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid or expired token");
         } catch (Exception e) {
+            // Catch all other exceptions
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Error fetching users");
+                    .body("An error occurred while fetching the users");
         }
     }
 

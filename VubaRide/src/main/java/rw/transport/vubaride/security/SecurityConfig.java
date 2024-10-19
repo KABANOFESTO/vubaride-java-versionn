@@ -27,12 +27,8 @@ public class SecurityConfig {
                 .addFilterBefore(corsFilter, UsernamePasswordAuthenticationFilter.class) // Add the CorsFilter before
                                                                                          // authentication
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/users/signup", "/api/users/login", "/api/auth/**").permitAll() // Public
-                                                                                                              // access
-                                                                                                              // to
-                                                                                                              // signup
-                                                                                                              // and
-                        // authentication endpoints
+                        .requestMatchers("/api/users/signup", "/api/users/login","/api/users/all","/auth/forgot-password", "/auth/**").permitAll()
+                        .requestMatchers("/public/**").permitAll()
                         .anyRequest().authenticated() // All other requests require authentication
                 );
 
