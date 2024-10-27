@@ -1,0 +1,38 @@
+{
+    "en": {
+        "title": "TemberaNawe",
+        "home": "Home",
+        "about": "About",
+        "services": "Services",
+        "gallery": "Gallery",
+        "contact": "Contact",
+        "book_now": "Book Now",
+        "about_us": "About Us",
+        "welcome": "Welcome to VubaRide",
+        "description": "TemberaNawe is Rwanda's premier tourism website, showcasing the country's diverse attractions."
+    },
+    "fr": {
+        "title": "TemberaNawe",
+        "home": "Accueil",
+        "about": "À propos",
+        "services": "Services",
+        "gallery": "Galerie",
+        "contact": "Contact",
+        "book_now": "Réservez maintenant",
+        "about_us": "À propos de nous",
+        "welcome": "Bienvenue chez VubaRide",
+        "description": "TemberaNawe est le principal site touristique du Rwanda, mettant en valeur les attractions diverses du pays."
+    },
+    "es": {
+        "title": "TemberaNawe",
+        "home": "Inicio",
+        "about": "Acerca de",
+        "services": "Servicios",
+        "gallery": "Galería",
+        "contact": "Contacto",
+        "book_now": "Reserva ahora",
+        "about_us": "Sobre nosotros",
+        "welcome": "Bienvenido a VubaRide",
+        "description": "TemberaNawe es el sitio web turístico principal de Ruanda, que muestra las diversas atracciones del país."
+    }
+}

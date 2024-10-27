@@ -126,10 +126,39 @@ public class UserController {
 
     // Endpoint to delete a user by email
     @DeleteMapping("/delete/{email}")
-    public ResponseEntity<String> deleteUser(@PathVariable("email") String email) {
+    public ResponseEntity<String> deleteUser(
+            @RequestHeader("Authorization") String authorizationHeader,
+            @PathVariable("email") String email) {
         try {
+            // Extract and validate JWT token
+            if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer ")) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Authorization token is required");
+            }
+
+            // Remove "Bearer " from the token
+            String jwtToken = authorizationHeader.substring(7);
+            Claims claims = jwtUtil.extractClaims(jwtToken);
+
+            // Extract the user's role from the token
+            String userRole = claims.get("role", String.class);
+            String tokenUserEmail = claims.getSubject(); // Get email from token
+
+            // Check if the user has ADMIN privileges
+            if (!Role.ADMIN.name().equals(userRole)) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access denied: Only administrators can delete users");
+            }
+
+            // Prevent admin from deleting their own account
+            if (email.equals(tokenUserEmail)) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Cannot delete your own admin account");
+            }
+
+            // Proceed with deletion
             userService.deleteUser(email);
             return ResponseEntity.ok("User deleted successfully");
+
+        } catch (JwtException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid or expired token");
         } catch (UsernameNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found: " + e.getMessage());
         } catch (Exception e) {

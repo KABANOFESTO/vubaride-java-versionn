@@ -21,19 +21,17 @@
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
-
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <link href="css/style.css" rel="stylesheet">
-    <script src="./js/auth.js" defer></script>
+    <!-- <script src="./js/auth.js" defer></script> -->
 </head>
 
 <body>
 
     <!-- Spinner Start -->
-    <div id="spinner"
-        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
             <span class="sr-only">Loading...</span>
         </div>
@@ -44,7 +42,7 @@
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
             <a href="" class="navbar-brand p-0">
-                <h1 class="m-0"><i class="fa fa-map-marker-alt me-3"></i>VubaRide</h1>
+                <h1 class="m-0"><i class="fa fa-map-marker-alt me-3" id="title"></i>VubaRide</h1>
                 <!-- <img src="img/logo.png" alt="Logo"> -->
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -52,7 +50,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
+                    <a href="dash1.html" class="nav-item nav-link active" id="home">Home</a>
                     <a href="about.html" class="nav-item nav-link">About</a>
                     <a href="services.html" class="nav-item nav-link">Services</a>
                     <a href="blog.html" class="nav-item nav-link">Garrely</a>
@@ -75,17 +73,13 @@
                         <img src="./img/1-bus.jpg" class="img-fluid" alt="Image">
                         <div class="carousel-caption">
                             <div class="p-3" style="max-width: 900px;margin: 40px auto;">
-                                <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">BOOK
-                                    Ritco Ticket</h4>
-                                <h1 class="display-2 text-capitalize text-white mb-4">Let's Explore The beauty of
-                                    Rwanda!</h1>
-                                <p class="mb-5 fs-5">Rwanda, the "Land of a Thousand Hills," offers breathtaking
-                                    landscapes, mountain gorillas in Volcanoes National Park,
-                                    vibrant culture, and the serene shores of Lake Kivu.
+                                <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">BOOK Ritco Ticket</h4>
+                                <h1 class="display-2 text-capitalize text-white mb-4">Let's Explore The beauty of Rwanda!
+                                </h1>
+                                <p class="mb-5 fs-5">Rwanda, the "Land of a Thousand Hills," offers breathtaking landscapes, mountain gorillas in Volcanoes National Park, vibrant culture, and the serene shores of Lake Kivu.
                                 </p>
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5"
-                                        href="./login.html">Connect Us...</a>
+                                    <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="./index.html">Connect Us...</a>
                                 </div>
                             </div>
                         </div>
@@ -94,18 +88,13 @@
                         <img src="./img/3-bus.jpg" class="img-fluid" alt="Image">
                         <div class="carousel-caption">
                             <div class="p-3" style="max-width: 900px;">
-                                <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">BOOK
-                                    Horizon Express</h4>
-                                <h1 class="display-2 text-capitalize text-white mb-4">Let's travel Lake Kivu and the
-                                    Enjoy the view
+                                <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">BOOK Horizon Express</h4>
+                                <h1 class="display-2 text-capitalize text-white mb-4">Let's travel Lake Kivu and the Enjoy the view
                                 </h1>
-                                <p class="mb-5 fs-5">Lake Kivu in Rwanda offers picturesque views, tranquil waters, and
-                                    a peaceful atmosphere. It's ideal for activities like boating, swimming, and
-                                    exploring charming lakeside towns.
+                                <p class="mb-5 fs-5">Lake Kivu in Rwanda offers picturesque views, tranquil waters, and a peaceful atmosphere. It's ideal for activities like boating, swimming, and exploring charming lakeside towns.
                                 </p>
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5"
-                                        href="./login.html">Connect Us...</a>
+                                    <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="./index.html">Connect Us...</a>
                                 </div>
                             </div>
                         </div>
@@ -114,17 +103,12 @@
                         <img src="./img/1-bus.jpg" class="img-fluid" alt="Image">
                         <div class="carousel-caption">
                             <div class="p-3" style="max-width: 900px;">
-                                <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">BOOK
-                                    Vocation Ticket</h4>
-                                <h1 class="display-2 text-capitalize text-white mb-4">Welcome To Umva Muhazi , Enjoy
-                                    The View!</h1>
-                                <p class="mb-5 fs-5">Umva Muhazi is a serene retreat on Lake Muhazi in Rwanda, offering
-                                    stunning views, comfortable accommodations, and a perfect setting for relaxation and
-                                    nature activities.
+                                <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">BOOK Vocation Ticket</h4>
+                                <h1 class="display-2 text-capitalize text-white mb-4">Welcome To Umva Muhazi , Enjoy The View!</h1>
+                                <p class="mb-5 fs-5">Umva Muhazi is a serene retreat on Lake Muhazi in Rwanda, offering stunning views, comfortable accommodations, and a perfect setting for relaxation and nature activities.
                                 </p>
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5"
-                                        href="./login.html">Connect Us...</a>
+                                    <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="./index.html">Connect Us...</a>
                                 </div>
                             </div>
                         </div>
@@ -147,21 +131,15 @@
         <div class="container py-5">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-5">
-                    <div class="h-100"
-                        style="border: 50px solid; border-color: transparent #13357B transparent #13357B;">
+                    <div class="h-100" style="border: 50px solid; border-color: transparent #13357B transparent #13357B;">
                         <img src="img/bg-bus.jpg" class="img-fluid w-100 h-100" alt="">
                     </div>
                 </div>
-                <div class="col-lg-7"
-                    style="background: linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(img/rwanda.png);">
+                <div class="col-lg-7" style="background: linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(img/rwanda.png);">
                     <h5 class="section-about-title pe-3">About Us</h5>
                     <h1 class="mb-4">Welcome to <span class="text-primary">VubaRide</span></h1>
-                    <p class="mb-4">TemberaNawe is Rwanda's premier tourism website, showcasing the country's diverse
-                        attractions. It highlights natural wonders like Volcanoes National Park, cultural sites, and
-                        vibrant cities.</p>
-                    <p class="mb-4">The platform offers travel tips, itineraries, and booking options, promoting Rwanda
-                        as a top destination for adventurers, nature lovers, and cultural enthusiasts. Discover the
-                        "Land of a Thousand Hills" with TemberaNawe.</p>
+                    <p class="mb-4">TemberaNawe is Rwanda's premier tourism website, showcasing the country's diverse attractions. It highlights natural wonders like Volcanoes National Park, cultural sites, and vibrant cities.</p>
+                    <p class="mb-4">The platform offers travel tips, itineraries, and booking options, promoting Rwanda as a top destination for adventurers, nature lovers, and cultural enthusiasts. Discover the "Land of a Thousand Hills" with TemberaNawe.</p>
                     <div class="row gy-2 gx-4 mb-4">
                         <div class="col-sm-6">
                             <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Sourthern Province</p>
@@ -198,13 +176,10 @@
                 <div class="col-lg-6">
                     <div class="row g-4">
                         <div class="col-12">
-                            <div
-                                class="service-content-inner d-flex align-items-center  bg-white border border-primary rounded p-4 pe-0">
+                            <div class="service-content-inner d-flex align-items-center  bg-white border border-primary rounded p-4 pe-0">
                                 <div class="service-content text-end">
                                     <h5 class="mb-4">Hotel Reservation</h5>
-                                    <p class="mb-0">Hotel reservation services assist in booking accommodations by
-                                        providing options, comparing prices, and securing rooms at desired hotels. They
-                                        often include features like flexible dates, special offers, and customer
+                                    <p class="mb-0">Hotel reservation services assist in booking accommodations by providing options, comparing prices, and securing rooms at desired hotels. They often include features like flexible dates, special offers, and customer
                                         reviews.
                                     </p>
                                 </div>
@@ -214,13 +189,10 @@
                             </div>
                         </div>
                         <div class="col-12">
-                            <div
-                                class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4 pe-0">
+                            <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4 pe-0">
                                 <div class="service-content text-end">
                                     <h5 class="mb-4">Finacial Guidance</h5>
-                                    <p class="mb-0">Financial guidance, through services like budgeting advice,
-                                        investment strategies, and retirement planning, helps individuals and businesses
-                                        manage their finances wisely, ensuring long-term stability and growth.
+                                    <p class="mb-0">Financial guidance, through services like budgeting advice, investment strategies, and retirement planning, helps individuals and businesses manage their finances wisely, ensuring long-term stability and growth.
                                     </p>
                                 </div>
                                 <div class="service-icon p-4">
@@ -233,32 +205,26 @@
                 <div class="col-lg-6">
                     <div class="row g-4">
                         <div class="col-12">
-                            <div
-                                class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4 ps-0">
+                            <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4 ps-0">
                                 <div class="service-icon p-4">
                                     <i class="fa fa-user fa-4x text-primary"></i>
                                 </div>
                                 <div class="service-content">
                                     <h5 class="mb-4">Travel Guides</h5>
-                                    <p class="mb-0">Travel guidance offers support with planning trips, including
-                                        destination recommendations, itinerary suggestions, visa information, and travel
-                                        tips. It helps travelers navigate logistics and ensures a smooth, enjoyable
+                                    <p class="mb-0">Travel guidance offers support with planning trips, including destination recommendations, itinerary suggestions, visa information, and travel tips. It helps travelers navigate logistics and ensures a smooth, enjoyable
                                         journey.
                                     </p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-12">
-                            <div
-                                class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4 ps-0">
+                            <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4 ps-0">
                                 <div class="service-icon p-4">
                                     <i class="fa fa-cog fa-4x text-primary"></i>
                                 </div>
                                 <div class="service-content">
                                     <h5 class="mb-4">Event Management</h5>
-                                    <p class="mb-0">Event management involves planning, organizing, and coordinating
-                                        events, from weddings and corporate functions to conferences and parties. It
-                                        includes tasks like venue selection, logistics, budgeting, and ensuring a
+                                    <p class="mb-0">Event management involves planning, organizing, and coordinating events, from weddings and corporate functions to conferences and parties. It includes tasks like venue selection, logistics, budgeting, and ensuring a
                                         seamless guest experience.
                                     </p>
                                 </div>
@@ -284,32 +250,27 @@
             <div class="tab-class text-center">
                 <ul class="nav nav-pills d-inline-flex justify-content-center mb-5">
                     <li class="nav-item">
-                        <a class="d-flex py-2 mx-3 border border-primary bg-light rounded-pill active"
-                            data-bs-toggle="pill" href="#tab-2">
+                        <a class="d-flex py-2 mx-3 border border-primary bg-light rounded-pill active" data-bs-toggle="pill" href="#tab-2">
                             <span class="text-dark" style="width: 150px;">Musanze</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="d-flex mx-3 py-2 border border-primary bg-light rounded-pill" data-bs-toggle="pill"
-                            href="#tab-3">
+                        <a class="d-flex mx-3 py-2 border border-primary bg-light rounded-pill" data-bs-toggle="pill" href="#tab-3">
                             <span class="text-dark" style="width: 150px;">Huye</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="d-flex mx-3 py-2 border border-primary bg-light rounded-pill" data-bs-toggle="pill"
-                            href="#tab-4">
+                        <a class="d-flex mx-3 py-2 border border-primary bg-light rounded-pill" data-bs-toggle="pill" href="#tab-4">
                             <span class="text-dark" style="width: 150px;">Rubavu</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="d-flex mx-3 py-2 border border-primary bg-light rounded-pill" data-bs-toggle="pill"
-                            href="#tab-5">
+                        <a class="d-flex mx-3 py-2 border border-primary bg-light rounded-pill" data-bs-toggle="pill" href="#tab-5">
                             <span class="text-dark" style="width: 150px;">Kayonza</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="d-flex mx-3 py-2 border border-primary bg-light rounded-pill" data-bs-toggle="pill"
-                            href="#tab-6">
+                        <a class="d-flex mx-3 py-2 border border-primary bg-light rounded-pill" data-bs-toggle="pill" href="#tab-6">
                             <span class="text-dark" style="width: 150px;">Nyarugenge</span>
                         </a>
                     </li>
@@ -320,8 +281,7 @@
                         <div class="row g-4">
                             <div class="col-lg-6">
                                 <div class="destination-img">
-                                    <img class="img-fluid rounded w-100" src="./img/volcanoes1.jpg" alt=""
-                                        style="height: 40vh;">
+                                    <img class="img-fluid rounded w-100" src="./img/volcanoes1.jpg" alt="" style="height: 40vh;">
                                     <div class="destination-overlay p-4">
                                         <h4 class="text-white mb-2 mt-3">Volcanoes National Park</h4>
                                         <a href="#" class="btn-hover text-white">Designed By Levis😎<i
@@ -335,8 +295,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="destination-img">
-                                    <img class="img-fluid rounded w-100" src="img/caves.jpg" alt=""
-                                        style="height: 40vh;">
+                                    <img class="img-fluid rounded w-100" src="img/caves.jpg" alt="" style="height: 40vh;">
                                     <div class="destination-overlay p-4">
                                         <h4 class="text-white mb-2 mt-3">Musanze Caves</h4>
                                         <a href="#" class="btn-hover text-white">Designed By Levis😎<i
@@ -386,8 +345,7 @@
                         <div class="row g-4">
                             <div class="col-lg-6">
                                 <div class="destination-img">
-                                    <img class="img-fluid rounded w-100" src="img/rubavu-large.jpg" alt=""
-                                        style="height: 40vh;">
+                                    <img class="img-fluid rounded w-100" src="img/rubavu-large.jpg" alt="" style="height: 40vh;">
                                     <div class="destination-overlay p-4">
                                         <h4 class="text-white mb-2 mt-3">Lake Kivu</h4>
                                         <a href="#" class="btn-hover text-white">Designed By Levis😎<i
@@ -437,8 +395,7 @@
                         <div class="row g-4">
                             <div class="col-lg-6">
                                 <div class="destination-img">
-                                    <img class="img-fluid rounded w-100" src="img/nyamirambo.jpg" alt=""
-                                        style="height: 40vh;">
+                                    <img class="img-fluid rounded w-100" src="img/nyamirambo.jpg" alt="" style="height: 40vh;">
                                     <div class="destination-overlay p-4">
                                         <h4 class="text-white mb-2 mt-3">Nyamirambo Neighborhood</h4>
                                         <a href="#" class="btn-hover text-white">Designed By Levis😎<i
@@ -452,8 +409,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="destination-img">
-                                    <img class="img-fluid rounded w-100" src="img/kandt.jpg" alt=""
-                                        style="height: 40vh;">
+                                    <img class="img-fluid rounded w-100" src="img/kandt.jpg" alt="" style="height: 40vh;">
                                     <div class="destination-overlay p-4">
                                         <h4 class="text-white mb-2 mt-3">Kandt House Museum</h4>
                                         <a href="#" class="btn-hover text-white">Designed By Levis😎<i
@@ -481,8 +437,7 @@
         <div class="tab-class text-center">
             <ul class="nav nav-pills d-inline-flex justify-content-center mb-5">
                 <li class="nav-item">
-                    <a class="d-flex mx-3 py-2 border border-primary bg-light rounded-pill active" data-bs-toggle="pill"
-                        href="#GalleryTab-1">
+                    <a class="d-flex mx-3 py-2 border border-primary bg-light rounded-pill active" data-bs-toggle="pill" href="#GalleryTab-1">
                         <span class="text-dark" style="width: 150px;">Visit Rwanda</span>
                     </a>
                 </li>
@@ -664,42 +619,32 @@
                 <div class="col-lg-6">
                     <h5 class="section-booking-title pe-3">Booking</h5>
                     <h1 class="text-white mb-4">TemberaNawe</h1>
-                    <p class="text-white mb-4">Book your next adventure with us! Our website offers a seamless
-                        booking
-                        experience for accommodations, tours, and activities. Explore stunning destinations, view
-                        detailed options, and secure your reservations easily.
+                    <p class="text-white mb-4">Book your next adventure with us! Our website offers a seamless booking experience for accommodations, tours, and activities. Explore stunning destinations, view detailed options, and secure your reservations easily.
                     </p>
-                    <p class="text-white mb-4">Whether you're planning a relaxing getaway or an exciting
-                        exploration,
-                        our user-friendly platform ensures a smooth process from start to finish. Start your journey
-                        today!
+                    <p class="text-white mb-4">Whether you're planning a relaxing getaway or an exciting exploration, our user-friendly platform ensures a smooth process from start to finish. Start your journey today!
                     </p>
                     <a href="#" class="btn btn-light text-primary rounded-pill py-3 px-5 mt-2">Read More</a>
                 </div>
                 <div class="col-lg-6">
                     <h1 class="text-white mb-3">Book To TemberaNawe</h1>
-                    <p class="text-white mb-4">Get <span class="text-warning">50% Off</span> On Your First Adventure
-                        Trip With TemberaNawe.</p>
+                    <p class="text-white mb-4">Get <span class="text-warning">50% Off</span> On Your First Adventure Trip With TemberaNawe.</p>
                     <form>
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control bg-white border-0" id="name"
-                                        placeholder="Your Name">
+                                    <input type="text" class="form-control bg-white border-0" id="name" placeholder="Your Name">
                                     <label for="name">Your Name</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="email" class="form-control bg-white border-0" id="email"
-                                        placeholder="Your Email">
+                                    <input type="email" class="form-control bg-white border-0" id="email" placeholder="Your Email">
                                     <label for="email">Your Email</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating date" id="date3" data-target-input="nearest">
-                                    <input type="text" class="form-control bg-white border-0" id="datetime"
-                                        placeholder="Date & Time" data-target="#date3" data-toggle="datetimepicker" />
+                                    <input type="text" class="form-control bg-white border-0" id="datetime" placeholder="Date & Time" data-target="#date3" data-toggle="datetimepicker" />
                                     <label for="datetime">Date & Time</label>
                                 </div>
                             </div>
@@ -736,8 +681,7 @@
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <textarea class="form-control bg-white border-0" placeholder="Special Request"
-                                        id="message" style="height: 100px"></textarea>
+                                    <textarea class="form-control bg-white border-0" placeholder="Special Request" id="message" style="height: 100px"></textarea>
                                     <label for="message">Other Request</label>
                                 </div>
                             </div>
@@ -800,8 +744,7 @@
         <div class="container">
             <div class="row g-4 align-items-center">
                 <div class="col-md-6 text-center text-md-end mb-md-0">
-                    <i class="fas fa-copyright me-2"></i><a class="text-white" href="#">TemberaNawe</a>, All right
-                    reserved.
+                    <i class="fas fa-copyright me-2"></i><a class="text-white" href="#">TemberaNawe</a>, All right reserved.
                 </div>
                 <div class="col-md-6 text-center text-md-start">
                     Designed By <a class="text-white" href="https://htmlcodex.com">Levis😎</a>

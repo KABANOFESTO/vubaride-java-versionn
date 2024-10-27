@@ -63,7 +63,7 @@ public class WebSecurityConfig {
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(jwtAuthEntryPoint))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/users/signup", "/api/users/login", "/auth/forgot-password",
+                        .requestMatchers("/api/users/signup", "/api/users/login","/api/users/delete/**", "/auth/forgot-password",
                                 "/auth/reset-password", "/api/users/all")
                         .permitAll()
                         .anyRequest().authenticated())

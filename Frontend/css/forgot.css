@@ -1,69 +1,56 @@
-* {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
-}
-
 body {
-    background-color: #ff99f5;
-    background-image:
-        radial-gradient(at 61% 4%, hsla(303, 91%, 61%, 1) 0px, transparent 50%),
-        radial-gradient(at 75% 66%, hsla(196, 91%, 79%, 1) 0px, transparent 50%),
-        radial-gradient(at 98% 88%, hsla(76, 87%, 78%, 1) 0px, transparent 50%),
-        radial-gradient(at 23% 16%, hsla(238, 96%, 77%, 1) 0px, transparent 50%),
-        radial-gradient(at 95% 65%, hsla(13, 91%, 75%, 1) 0px, transparent 50%),
-        radial-gradient(at 10% 79%, hsla(228, 96%, 69%, 1) 0px, transparent 50%),
-        radial-gradient(at 85% 58%, hsla(328, 81%, 68%, 1) 0px, transparent 50%);
-    background-repeat: no-repeat;
-    color: white;
     display: flex;
-    align-items: center;
     justify-content: center;
-    padding: 15rem 0;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #e0e8f9;
 }
 
 .card {
-    backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
-    background-color: rgba(0, 0, 0, 0.75);
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.125);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 30px 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    width: 300px;
+    text-align: center;
 }
 
 .lock-icon {
     font-size: 3rem;
+    color: #4a90e2;
 }
 
 h2 {
     font-size: 1.5rem;
-    margin-top: 10px;
-    text-transform: uppercase;
-}
-
-p {
-    font-size: 12px;
+    margin: 0.5rem 0;
+    color: #333;
 }
 
 .passInput {
-    margin-top: 15px;
-    width: 80%;
-    background: transparent;
-    border: none;
-    border-bottom: 2px solid deepskyblue;
-    font-size: 15px;
-    color: white;
+    width: 100%;
+    padding: 0.8rem;
+    margin-top: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
     outline: none;
+    font-size: 1rem;
 }
 
-button {
-    margin-top: 15px;
-    width: 80%;
-    background-color: deepskyblue;
+button#sendBtn {
+    margin-top: 1.5rem;
+    width: 100%;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #4a90e2;
     color: white;
-    padding: 10px;
-    text-transform: uppercase;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button#sendBtn:hover {
+    background-color: #3b75c4;
 }

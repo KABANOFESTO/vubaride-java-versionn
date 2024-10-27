@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Dashboard-page</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: #f4f4f4;
+            color: #333;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        nav {
+            background-color: #103440;
+            height: 60px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            color: white;
+        }
+
+        nav .brand {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav .logout {
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 18px;
+        }
+
+        .aside {
+            width: 250px;
+            background-color: #fff;
+            padding: 20px;
+            position: fixed;
+            top: 60px;
+            bottom: 0;
+            left: 0;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .aside h3 {
+            font-size: 18px;
+            color: #103440;
+            margin-bottom: 20px;
+        }
+
+        .aside a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            margin: 15px 0;
+            font-size: 16px;
+            padding: 10px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .aside a:hover,
+        .aside a.active {
+            background-color: #103440;
+            color: white;
+        }
+
+        .dashDisplay {
+            margin-left: 270px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .dashDisplay .card {
+            flex: 1;
+            min-width: 250px;
+            height: 100px;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .dashDisplay .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .dashDisplay h3 {
+            font-size: 20px;
+            color: #103440;
+        }
+
+        #container {
+            margin-left: 270px;
+            padding: 20px;
+        }
+
+        .feedback-item {
+            background-color: white;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .feedback-title h3 {
+            margin-bottom: 10px;
+            color: #103440;
+        }
+
+        .feedback-body p {
+            margin-bottom: 15px;
+        }
+
+        .feedback-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .feedback-footer .reply,
+        .feedback-footer .delete {
+            padding: 8px 15px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .feedback-footer .reply {
+            background-color: #28a745;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .feedback-footer .reply:hover {
+            background-color: #218838;
+        }
+
+        .feedback-footer .delete {
+            background-color: #dc3545;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .feedback-footer .delete:hover {
+            background-color: #c82333;
+        }
+
+        @media (max-width: 1200px) {
+            .dashDisplay {
+                margin-left: 0;
+                padding: 10px;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .aside {
+                position: relative;
+                width: 100%;
+                padding: 10px;
+                box-shadow: none;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            #container {
+                margin-left: 0;
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav .brand {
+                font-size: 20px;
+            }
+
+            .dashDisplay .card {
+                min-width: 100%;
+                height: 80px;
+            }
+
+            .dashDisplay h3 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <label class="brand"><i>G.Antoine</i></label>
+        <button class="logout" onclick="logout()">LOGOUT</button>
+    </nav>
+    <div class="aside">
+        <h3 id="dash"><a href="#" class="active">Dashboard</a></h3>
+        <a href="view.html">Messages</a>
+        <a href="admin.html">View-Users</a>
+        <a href="view.html">Bookings</a>
+    </div>
+    <div class="dashDisplay">
+        <div class="card">
+            <h3>0 Message(s)</h3>
+        </div>
+        <div class="card">
+            <h3>0 User(s)</h3>
+        </div>
+        <div class="card">
+            <h3>0 Booking(s)</h3>
+        </div>
+    </div>
+    <div id="container"></div>
+    <script src="../js/logout.js"></script>
+    <script>
+        const user = JSON.parse(localStorage.getItem('loginedUser'));
+        const getMessage = () => {
+            const messageContainer = document.getElementById('container');
+            var myHeaders = new Headers();
+            myHeaders.append("Authorization", `Bearer ${user.token}`);
+
+            var requestOptions = {
+                method: 'GET',
+                headers: myHeaders,
+                redirect: 'follow'
+            };
+
+            fetch("https://my-brand-api.onrender.com/api/message/", requestOptions)
+                .then(response => response.json())
+                .then(result => {
+                    const messages = result.messages || []
+
+                    messages.forEach(element => {
+                        messageContainer.innerHTML += `<div class="feedback-item">
+                            <div class="feedback-title">
+                                <h3>${element.email}</h3>
+                            </div>
+                            <div class="feedback-body">
+                                <p>${element.message}</p>
+                            </div>
+                            <div class="feedback-footer">
+                                <a href='mailto:${element.email}' target='blank'> 
+                                    <button class="reply">Reply</button>
+                                </a>
+                                <button class="delete" onclick="deleteMessage('${element._id}')">Delete</button>
+                            </div>
+                        </div>`;
+                    });
+                })
+                .catch(error => console.log('error', error));
+        };
+        getMessage();
+
+        const deleteMessage = id => {
+            var myHeaders = new Headers();
+            myHeaders.append("Authorization", `Bearer ${user.token}`);
+
+            var requestOptions = {
+                method: 'DELETE',
+                headers: myHeaders,
+                redirect: 'follow'
+            };
+
+            fetch(`https://my-brand-api.onrender.com/api/message/${id}/delete`, requestOptions)
+                .then(response => response.json())
+                .then(result => {
+                    document.getElementById('container').innerHTML = '';
+                    getMessage();
+                })
+                .catch(error => console.log('error', error));
+        };
+    </script>
+</body>
+
+</html>

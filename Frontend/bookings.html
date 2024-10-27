@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Management</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            margin-top: 20px;
+        }
+        
+        .card-title {
+            font-weight: 600;
+        }
+        
+        .filter-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .table th,
+        .table td {
+            vertical-align: middle;
+        }
+        
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        
+        .search-loading {
+            display: none;
+            margin-left: 8px;
+            font-size: 18px;
+        }
+        
+        .search-suggestions {
+            display: none;
+            border: 1px solid #ccc;
+            background: white;
+            position: absolute;
+            z-index: 10;
+            width: 100%;
+            max-width: 300px;
+        }
+        
+        .suggestion-item {
+            padding: 10px;
+            cursor: pointer;
+        }
+        
+        .suggestion-item:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .clear-search {
+            cursor: pointer;
+            display: none;
+            margin-left: 10px;
+        }
+        
+        .highlight {
+            font-weight: bold;
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="nav-buttons">
+            <button onclick="goBack()" class="btn btn-secondary">Back</button>
+            <button onclick="logout()" class="btn btn-danger">Logout</button>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Recent Bookings</h5>
+                <div class="filter-section mb-4">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search by Name or Code" onkeyup="filterAndPaginate()">
+                    <span class="clear-search" onclick="clearSearch()">❌</span>
+                    <div class="search-suggestions" id="searchSuggestions"></div>
+                    <select id="destinationFilter" class="form-control" onchange="filterAndPaginate()">
+                        <option value="">Filter by Destination</option>
+                        <option value="Kigali-Muhanga">Kigali-Muhanga</option>
+                        <option value="Kigali-Huye">Kigali-Huye</option>
+                    </select>
+                    <select id="sortBy" class="form-control" onchange="sortBookings()">
+                        <option value="">Sort by</option>
+                        <option value="date">Booking Date</option>
+                        <option value="time">Booking Time</option>
+                        <option value="name">Name</option>
+                    </select>
+                    <span class="search-loading" id="searchLoading">🔄</span>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Booking Code</th>
+                                <th>Name</th>
+                                <th>Destination</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bookingsTableBody"></tbody>
+                    </table>
+                </div>
+                <div class="pagination-container">
+                    <button onclick="prevPage()" id="prevBtn" class="btn btn-secondary" disabled>Previous</button>
+                    <span id="pageIndicator" class="mx-3"></span>
+                    <button onclick="nextPage()" id="nextBtn" class="btn btn-secondary" disabled>Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let bookings = [];
+        let filteredBookings = [];
+        let currentPage = 1;
+        const rowsPerPage = 4;
+
+        async function fetchBookings() {
+            try {
+                document.getElementById('searchLoading').style.display = 'block';
+                const response = await fetch('http://localhost:8081/api/bookings');
+                bookings = await response.json();
+                filteredBookings = bookings;
+                displayBookings();
+                updatePaginationButtons();
+                document.getElementById('searchLoading').style.display = 'none';
+            } catch (error) {
+                console.error('Error fetching bookings:', error);
+            }
+        }
+
+        function displayBookings() {
+            const startIndex = (currentPage - 1) * rowsPerPage;
+            const paginatedData = filteredBookings.slice(startIndex, startIndex + rowsPerPage);
+            const tableBody = document.getElementById('bookingsTableBody');
+            tableBody.innerHTML = paginatedData.length ? '' : `<tr><td colspan="6" class="text-center">No bookings found</td></tr>`;
+
+            paginatedData.forEach(booking => {
+                const row = `
+                    <tr>
+                        <td>${booking.bookingCode}</td>
+                        <td>${booking.userId}</td>
+                        <td>${booking.routeId}</td>
+                        <td>${booking.bookingDate}</td>
+                        <td>${booking.bookingTime}</td>
+                        <td><span class="badge ${booking.status === 'Confirmed' ? 'badge-success' : 'badge-warning'}">${booking.status}</span></td>
+                    </tr>`;
+                tableBody.innerHTML += row;
+            });
+            document.getElementById('pageIndicator').innerText = `Page ${currentPage} of ${Math.ceil(filteredBookings.length / rowsPerPage)}`;
+        }
+
+        function filterAndPaginate() {
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            const destinationFilter = document.getElementById('destinationFilter').value;
+            filteredBookings = bookings.filter(booking =>
+                (!searchInput || booking.userId.toLowerCase().includes(searchInput) || booking.bookingCode.toLowerCase().includes(searchInput)) &&
+                (!destinationFilter || booking.routeId === destinationFilter)
+            );
+            currentPage = 1;
+            displayBookings();
+            updatePaginationButtons();
+            showSuggestions(searchInput);
+        }
+
+        function sortBookings() {
+            const sortBy = document.getElementById('sortBy').value;
+            if (sortBy === 'date') {
+                filteredBookings.sort((a, b) => new Date(a.bookingDate) - new Date(b.bookingDate));
+            } else if (sortBy === 'time') {
+                filteredBookings.sort((a, b) => a.bookingTime.localeCompare(b.bookingTime));
+            } else if (sortBy === 'name') {
+                filteredBookings.sort((a, b) => a.userId.localeCompare(b.userId));
+            }
+            currentPage = 1;
+            displayBookings();
+            updatePaginationButtons();
+        }
+
+        function prevPage() {
+            if (currentPage > 1) currentPage--;
+            displayBookings();
+            updatePaginationButtons();
+        }
+
+        function nextPage() {
+            if (currentPage < Math.ceil(filteredBookings.length / rowsPerPage)) currentPage++;
+            displayBookings();
+            updatePaginationButtons();
+        }
+
+        function updatePaginationButtons() {
+            document.getElementById('prevBtn').disabled = currentPage === 1;
+            document.getElementById('nextBtn').disabled = currentPage === Math.ceil(filteredBookings.length / rowsPerPage);
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+
+        function logout() {
+            window.location.href = '/logout';
+        }
+
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('searchSuggestions').style.display = 'none';
+            filterAndPaginate();
+        }
+
+        function showSuggestions(searchText) {
+            const suggestionsContainer = document.getElementById('searchSuggestions');
+            const suggestions = bookings.filter(booking =>
+                booking.userId.toLowerCase().includes(searchText) ||
+                booking.bookingCode.toLowerCase().includes(searchText)
+            ).slice(0, 5);
+
+            if (suggestions.length === 0) {
+                suggestionsContainer.innerHTML = '<div class="no-results">No matches found</div>';
+            } else {
+                suggestionsContainer.innerHTML = suggestions.map(booking => `
+                    <div class="suggestion-item" onclick="selectSuggestion('${booking.userId}')">
+                        <span>${highlightMatch(booking.userId, searchText)}</span> - 
+                        <span class="suggestion-code">${highlightMatch(booking.bookingCode, searchText)}</span>
+                    </div>
+                `).join('');
+            }
+            suggestionsContainer.style.display = suggestions.length ? 'block' : 'none';
+        }
+
+        function highlightMatch(text, searchText) {
+            if (!searchText) return text;
+            const regex = new RegExp(`(${searchText})`, 'gi');
+            return text.replace(regex, '<span class="highlight">$1</span>');
+        }
+
+        function selectSuggestion(selectedText) {
+            document.getElementById('searchInput').value = selectedText;
+            document.getElementById('searchSuggestions').style.display = 'none';
+            filterAndPaginate();
+        }
+
+        document.addEventListener("DOMContentLoaded", fetchBookings);
+    </script>
+</body>
+
+</html>
