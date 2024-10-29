@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>TemberaNawe</title>
+    <title>VubaRide</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -11,17 +11,38 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&family=Roboto&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-
-
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
     <link href="css/style.css" rel="stylesheet">
+    <style>
+        .language-selector {
+            position: relative;
+            margin-left: 15px;
+        }
+
+        .language-selector select {
+            padding: 5px 25px 5px 10px;
+            border: 1px solid #13357B;
+            border-radius: 20px;
+            background: transparent;
+            color: #13357B;
+            cursor: pointer;
+        }
+
+        .language-selector select:focus {
+            outline: none;
+            border-color: #13357B;
+        }
+
+        @media (max-width: 991px) {
+            .language-selector {
+                margin: 10px 0;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -32,33 +53,53 @@
         </div>
     </div>
 
-
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
             <a href="" class="navbar-brand p-0">
                 <h1 class="m-0"><i class="fa fa-map-marker-alt me-3"></i>VubaRide</h1>
-
-
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
-                    <a href="dash1.html" class="nav-item nav-link">Home</a>
-                    <a href="about.html" class="nav-item nav-link active">About</a>
-                    <a href="services.html" class="nav-item nav-link">Services</a>
-                    <a href="blog.html" class="nav-item nav-link">Garrely</a>
-                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    <a href="dash1.html" class="nav-item nav-link" data-i18n="nav.home">Home</a>
+                    <a href="about.html" class="nav-item nav-link active" data-i18n="nav.about">About</a>
+                    <a href="services.html" class="nav-item nav-link" data-i18n="nav.services">Services</a>
+                    <a href="blog.html" class="nav-item nav-link" data-i18n="nav.gallery">Gallery</a>
+                    <a href="contact.html" class="nav-item nav-link" data-i18n="nav.contact">Contact</a>
                 </div>
-                <a href="./booking.html" class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4">Book Now</a>
+                <a href="./booking.html" class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4" data-i18n="nav.bookNow">Book Now</a>
+                <!-- Add language selector -->
+            <div class="language-selector">
+                    <select id="languageSelect" onchange="changeLanguage(this.value)">
+                        <option value="en">English</option>
+                        <option value="fr">Français</option>
+                        <option value="es">Español</option>
+                        <option value="de">Deutsch</option>
+                        <option value="it">Italiano</option>
+                        <option value="pt">Português</option>
+                        <option value="nl">Nederlands</option>
+                        <option value="pl">Polski</option>
+                        <option value="ru">Русский</option>
+                        <option value="ar">العربية</option>
+                        <option value="hi">हिंदी</option>
+                        <option value="zh">中文</option>
+                        <option value="ja">日本語</option>
+                        <option value="ko">한국어</option>
+                        <option value="sw">Kiswahili</option>
+                        <option value="rw">Kinyarwanda</option>
+                        <option value="tr">Türkçe</option>
+                        <option value="vi">Tiếng Việt</option>
+                    </select>
+                </div>
             </div>
         </nav>
 
 
         <div class="container-fluid bg-breadcrumb">
             <div class="container text-center py-5" style="max-width: 900px;">
-                <h3 class="text-white display-3 mb-4">About Us</h1>
+                <h3 class="text-white display-3 mb-4" data-i18n="about.title">About Us</h3>
             </div>
         </div>
 
@@ -72,10 +113,10 @@
                         </div>
                     </div>
                     <div class="col-lg-7" style="background: linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(img/rwanda.png);">
-                        <h5 class="section-about-title pe-3">About Us</h5>
-                        <h1 class="mb-4">Welcome to <span class="text-primary">VubaRide</span></h1>
-                        <p class="mb-4">TemberaNawe is Rwanda's premier tourism website, showcasing the country's diverse attractions. It highlights natural wonders like Volcanoes National Park, cultural sites, and vibrant cities.</p>
-                        <p class="mb-4">The platform offers travel tips, itineraries, and booking options, promoting Rwanda as a top destination for adventurers, nature lovers, and cultural enthusiasts. Discover the "Land of a Thousand Hills" with TemberaNawe.</p>
+                        <h5 class="section-about-title pe-3" data-i18n="about.title">About Us</h5>
+                        <h1 class="mb-4" data-i18n="about.welcome">Welcome to <span class="text-primary">VubaRide</span></h1>
+                        <p class="mb-4" data-i18n="about.description1">Vubaride is Rwanda's premier Transport website, showcasing the country's diverse attractions. It highlights natural wonders like Volcanoes National Park, cultural sites, and vibrant cities.</p>
+                        <p class="mb-4" data-i18n="about.description2">The platform offers travel tips, itineraries, and booking options, promoting Rwanda as a top destination for adventurers, nature lovers, and cultural enthusiasts. Discover the "Land of a Thousand Hills" with VubaRide.</p>
                         <div class="row gy-2 gx-4 mb-4">
                             <div class="col-sm-6">
                                 <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Sourthern Province</p>
@@ -94,7 +135,7 @@
                                 </p>
                             </div>
                         </div>
-                        <a class="btn btn-primary rounded-pill py-3 px-5 mt-2" href="">Read More</a>
+                        <a class="btn btn-primary rounded-pill py-3 px-5 mt-2" href="" data-i18n="about.readMore">Read More</a>
                     </div>
                 </div>
             </div>
@@ -107,7 +148,7 @@
                         <div class="footer-item d-flex flex-column">
                             <h4 class="mb-4 text-white">Get In Touch</h4>
                             <a href=""><i class="fas fa-home me-2"></i>Kigali City, Rwanda</a>
-                            <a href=""><i class="fas fa-envelope me-2"></i> Levis@gmail.com</a>
+                            <a href=""><i class="fas fa-envelope me-2"></i> kabanofesto1@gmail.com</a>
                             <a href=""><i class="fas fa-phone me-2"></i> +0250785206973</a>
                             <div class="d-flex align-items-center">
                                 <i class="fas fa-share fa-2x text-white me-2"></i>
@@ -148,10 +189,10 @@
             <div class="container">
                 <div class="row g-4 align-items-center">
                     <div class="col-md-6 text-center text-md-end mb-md-0">
-                        <i class="fas fa-copyright me-2"></i><a class="text-white" href="#">TemberaNawe</a>, All right reserved.
+                        <i class="fas fa-copyright me-2"></i><a class="text-white" href="#">VubaRide</a>, All right reserved.
                     </div>
                     <div class="col-md-6 text-center text-md-start">
-                        Designed By <a class="text-white" href="https://htmlcodex.com">Levis😎</a>
+                        Designed By <a class="text-white" href="https://htmlcodex.com">Kabano😎</a>
                     </div>
                 </div>
             </div>
@@ -169,6 +210,72 @@
 
     <script src="js/main.js"></script>
     <script src="js/transaction.js"></script>
+    <script>
+        // Translations object
+        const translations = {
+            en: {
+                nav: {
+                    home: "Home",
+                    about: "About",
+                    services: "Services",
+                    gallery: "Gallery",
+                    contact: "Contact",
+                    bookNow: "Book Now"
+                },
+                about: {
+                    title: "About Us",
+                    welcome: "Welcome to",
+                    description1: "Vubaride is Rwanda's premier Transport website, showcasing the country's diverse attractions. It highlights natural wonders like Volcanoes National Park, cultural sites, and vibrant cities.",
+                    description2: "The platform offers travel tips, itineraries, and booking options, promoting Rwanda as a top destination for adventurers, nature lovers, and cultural enthusiasts. Discover the 'Land of a Thousand Hills' with VubaRide.",
+                    readMore: "Read More"
+                },
+                // Add more English translations...
+            },
+            fr: {
+                nav: {
+                    home: "Accueil",
+                    about: "À propos",
+                    services: "Services",
+                    gallery: "Galerie",
+                    contact: "Contact",
+                    bookNow: "Réserver"
+                },
+                about: {
+                    title: "À propos de nous",
+                    welcome: "Bienvenue à",
+                    description1: "Vubaride est le premier site de transport du Rwanda, présentant les diverses attractions du pays. Il met en valeur les merveilles naturelles comme le Parc National des Volcans, les sites culturels et les villes dynamiques.",
+                    description2: "La plateforme propose des conseils de voyage, des itinéraires et des options de réservation, promouvant le Rwanda comme une destination de choix pour les aventuriers, les amoureux de la nature et les passionnés de culture. Découvrez le 'Pays des Mille Collines' avec VubaRide.",
+                    readMore: "Lire la suite"
+                },
+                // Add more French translations...
+            },
+            // Add more languages...
+        };
+
+        // Function to change language
+        function changeLanguage(lang) {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(element => {
+                const keys = element.getAttribute('data-i18n').split('.');
+                let translation = translations[lang];
+                keys.forEach(key => {
+                    translation = translation[key];
+                });
+                if (translation) {
+                    element.innerHTML = translation;
+                }
+            });
+            document.documentElement.lang = lang;
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        // Initialize with preferred or default language
+        document.addEventListener('DOMContentLoaded', () => {
+            const preferredLanguage = localStorage.getItem('preferredLanguage') || 'en';
+            document.getElementById('languageSelect').value = preferredLanguage;
+            changeLanguage(preferredLanguage);
+        });
+    </script>
 </body>
 
 </html>

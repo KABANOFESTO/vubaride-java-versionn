@@ -1256,6 +1256,7 @@
     line-height: 30px;
     color: var(--bs-white);
     transition: 0.5s;
+    cursor: pointer;  
 }
 
 .footer .footer-item a:hover {

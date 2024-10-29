@@ -21,7 +21,7 @@
                 <span class="fa fa-bars"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav ms-auto py-0">
+                <div class="navbar-nav ms-auto py-0 ">
                     <a href="dash1.html" class="nav-item nav-link">Home</a>
                     <a href="about.html" class="nav-item nav-link">About</a>
                     <a href="services.html" class="nav-item nav-link">Services</a>
@@ -31,40 +31,40 @@
             </div>
         </nav>
     </div>
-
-    <div class="container-fluid bg-breadcrumb">
-        <div class="container text-center py-5" style="max-width: 900px;">
-            <h3 class="text-white display-3 mb-4">Online VubaRide Booking</h1>
-        </div>
-    </div>
-
-    <!-- Tour Booking Start -->
     <div class="container-fluid booking py-5" id="booking">
+        <br/><br/><br/><br/><br/>
         <div class="container py-5">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6">
                     <h1 class="text-white mb-4">VubaRide Booking</h1>
                     <p class="text-white mb-4">Book your next adventure with us!</p>
-                    <button id="viewTicketBtn" class="btn btn-light text-primary rounded-pill py-3 px-5 mt-2">View My Ticket</button>
+                    <div id="bookingCodeDisplay" class="text-white mb-4" style="display: none;"></div>
+                    <button id="downloadTicketBtn" class="btn btn-light text-primary rounded-pill py-3 px-5 mt-2"
+                        style="display: none;">Download Ticket</button>
+                    <button id="viewTicketBtn" class="btn btn-light text-primary rounded-pill py-3 px-5 mt-2">View My
+                        Ticket</button>
                 </div>
                 <div class="col-lg-6">
                     <form id="bookingForm">
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control bg-white border-0" id="name" placeholder="Your Name">
+                                    <input type="text" class="form-control bg-white border-0" id="name"
+                                        placeholder="Your Name">
                                     <label for="name">Your Name</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control bg-white border-0" id="seatNumber" placeholder="Enter Seat Number">
+                                    <input type="text" class="form-control bg-white border-0" id="seatNumber"
+                                        placeholder="Enter Seat Number">
                                     <label for="seatNumber">Seat Number</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating date">
-                                    <input type="date" class="form-control bg-white border-0" id="date" placeholder="Booking Date">
+                                    <input type="date" class="form-control bg-white border-0" id="date"
+                                        placeholder="Booking Date">
                                     <label for="date">Booking Date</label>
                                 </div>
                             </div>
@@ -80,7 +80,8 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-floating date">
-                                    <input type="time" class="form-control bg-white border-0" id="time" placeholder="Booking Time">
+                                    <input type="time" class="form-control bg-white border-0" id="time"
+                                        placeholder="Booking Time">
                                     <label for="time">Booking Time</label>
                                 </div>
                             </div>
@@ -101,6 +102,7 @@
             <p id="ticketInfo">Loading...</p>
         </div>
     </div>
+
     <div class="container-fluid footer py-5">
         <div class="container py-5">
             <div class="row g-5">
@@ -108,7 +110,7 @@
                     <div class="footer-item d-flex flex-column">
                         <h4 class="mb-4 text-white">Get In Touch</h4>
                         <a href=""><i class="fas fa-home me-2"></i>Kigali City, Rwanda</a>
-                        <a href=""><i class="fas fa-envelope me-2"></i> Levis@gmail.com</a>
+                        <a href=""><i class="fas fa-envelope me-2"></i> kabanofesto1@gmail.com</a>
                         <a href=""><i class="fas fa-phone me-2"></i> +0250785206973</a>
                         <div class="d-flex align-items-center">
                             <i class="fas fa-share fa-2x text-white me-2"></i>
@@ -129,43 +131,48 @@
                         <a href=""><i class="fas fa-angle-right me-2"></i> About</a>
                         <a href=""><i class="fas fa-angle-right me-2"></i> Service</a>
                         <a href=""><i class="fas fa-angle-right me-2"></i> Price</a>
-                        <a href=""><i class="fas fa-angle-right me-2"></i> Garrely</a>
+                        <a href=""><i class="fas fa-angle-right me-2"></i> Gallery</a>
                         <a href=""><i class="fas fa-angle-right me-2"></i> Contact Us</a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-6 col-xl-3">
                     <div class="footer-item d-flex flex-column">
                         <h4 class="mb-4 text-white">Support</h4>
-                        <a onclick="logout()"><i class="fas fa-angle-right me-2"></i> Logout</a>
+                        <a onclick="logout()"><i class="fas fa-angle-right me-2 log"></i> Logout</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Footer End -->
 
-    <!-- Copyright Start -->
     <div class="container-fluid copyright text-body py-4">
         <div class="container">
             <div class="row g-4 align-items-center">
                 <div class="col-md-6 text-center text-md-end mb-md-0">
-                    <i class="fas fa-copyright me-2"></i><a class="text-white" href="#">TemberaNawe</a>, All right reserved.
+                    <i class="fas fa-copyright me-2"></i><a class="text-white" href="#">VubaRide</a>, All right
+                    reserved.
                 </div>
                 <div class="col-md-6 text-center text-md-start">
-                    Designed By <a class="text-white" href="https://htmlcodex.com">Levis😎</a>
+                    Designed By <a class="text-white" href="https://htmlcodex.com">Kabano😎</a>
                 </div>
             </div>
         </div>
     </div>
-    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-barcode/2.0.0/jquery.barcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+    <!-- Load jsPDF after JsBarcode -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Booking form submission
-            document.getElementById('bookingForm').addEventListener('submit', async(event) => {
+        document.addEventListener('DOMContentLoaded', function () {
+            let bookingResult;
+
+            document.getElementById('bookingForm').addEventListener('submit', async (event) => {
                 event.preventDefault();
                 const token = localStorage.getItem('authToken');
 
@@ -194,14 +201,19 @@
                     });
 
                     if (!response.ok) throw new Error('Booking failed.');
+
+                    bookingResult = await response.json();
+                    document.getElementById('bookingCodeDisplay').textContent = `Your Booking Code: ${bookingResult.bookingCode}`;
+                    document.getElementById('bookingCodeDisplay').style.display = 'block';
+                    document.getElementById('downloadTicketBtn').style.display = 'inline-block'; // Show download button
+
                     alert('Booking successful!');
                 } catch (error) {
                     alert(`Error: ${error.message}`);
                 }
             });
 
-            // View My Ticket functionality
-            document.getElementById('viewTicketBtn').addEventListener('click', async() => {
+            document.getElementById('viewTicketBtn').addEventListener('click', async () => {
                 const bookingCode = prompt("Please enter your booking code:");
                 if (!bookingCode) return;
 
@@ -217,7 +229,77 @@
                 }
             });
 
-            // Close the modal
+            // Download ticket functionality
+            document.getElementById('downloadTicketBtn').addEventListener('click', async () => {
+                try {
+                    // Initialize jsPDF
+                    const { jsPDF } = window.jspdf;
+                    const pdf = new jsPDF();
+                    
+                    // Add ticket details
+                    pdf.setFontSize(16);
+                    pdf.text('VubaRide Ticket', 105, 20, { align: 'center' });
+                    
+                    pdf.setFontSize(12);
+                    const details = [
+                        `Name: ${bookingResult.userId}`,
+                        `Booking Code: ${bookingResult.bookingCode}`,
+                        `Route: ${document.getElementById('select1').options[document.getElementById('select1').selectedIndex].text}`,
+                        `Seat Number: ${document.getElementById('seatNumber').value}`,
+                        `Date: ${document.getElementById('date').value}`,
+                        `Time: ${document.getElementById('time').value}`
+                    ];
+
+                    details.forEach((detail, index) => {
+                        pdf.text(detail, 20, 40 + (index * 10));
+                    });
+
+                    // Create a temporary container for the barcode
+                    const barcodeContainer = document.createElement('div');
+                    barcodeContainer.style.display = 'none';
+                    document.body.appendChild(barcodeContainer);
+
+                    // Generate barcode using a promise
+                    await new Promise((resolve, reject) => {
+                        try {
+                            const barcodeCanvas = document.createElement('canvas');
+                            barcodeContainer.appendChild(barcodeCanvas);
+                            
+                            JsBarcode(barcodeCanvas, bookingResult.bookingCode, {
+                                format: "CODE128",
+                                width: 2,
+                                height: 100,
+                                displayValue: true,
+                                fontSize: 20,
+                                margin: 10
+                            });
+
+                            // Convert canvas to image and add to PDF
+                            const barcodeImage = barcodeCanvas.toDataURL('image/png');
+                            pdf.addImage(barcodeImage, 'PNG', 20, 120, 170, 50);
+                            
+                            // Clean up
+                            document.body.removeChild(barcodeContainer);
+                            resolve();
+                        } catch (err) {
+                            reject(err);
+                        }
+                    });
+
+                    // Add footer
+                    pdf.setFontSize(10);
+                    pdf.text('Thank you for choosing VubaRide!', 105, 280, { align: 'center' });
+
+                    // Save the PDF
+                    pdf.save(`VubaRide_Ticket_${bookingResult.bookingCode}.pdf`);
+
+                } catch (error) {
+                    console.error("Error generating PDF:", error);
+                    alert("Error generating ticket: " + error.message);
+                }
+            });
+
+
             document.querySelector('.close').addEventListener('click', () => {
                 document.getElementById('ticketModal').style.display = 'none';
             });
@@ -227,30 +309,25 @@
     <script>
         function logout() {
             try {
-                // Clear all authentication-related data
-                localStorage.clear(); // Remove all localStorage data
-                sessionStorage.clear(); // Clear session storage as well
+                localStorage.clear();
+                sessionStorage.clear();
 
-                // Clear any authentication cookies
-                document.cookie.split(";").forEach(function(cookie) {
+                document.cookie.split(";").forEach(function (cookie) {
                     const eqPos = cookie.indexOf("=");
                     const name = eqPos > -1 ? cookie.substr(0, eqPos).trim() : cookie.trim();
                     document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
                 });
 
-                // Prevent caching of sensitive pages
                 if (window.history && window.history.pushState) {
                     window.history.pushState('', '', window.location.href);
-                    window.onpopstate = function() {
+                    window.onpopstate = function () {
                         window.history.pushState('', '', window.location.href);
                     };
                 }
 
-                // Redirect to login page
-                window.location.replace('./index.html'); // Using replace() prevents back button from accessing previous state
+                window.location.replace('./index.html');
             } catch (error) {
                 console.error('Error during logout:', error);
-                // Fallback redirect if something fails
                 window.location.href = './index.html';
             }
         }
