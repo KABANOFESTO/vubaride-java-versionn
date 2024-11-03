@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "users") // Matches the table name in the database
+@Table(name = "users") // Matches........................................ the table name in the database
 @Getter
 @Setter
 @NoArgsConstructor

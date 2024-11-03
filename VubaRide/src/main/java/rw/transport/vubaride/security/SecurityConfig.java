@@ -23,6 +23,7 @@ public class SecurityConfig {
                                 "/auth/forgot-password",
                                 "/auth/reset-password",
                                 "/api/bookings/**",
+                                "/bookings/{id}/status",
                                 "/api/users/delete/**",
                                 "/auth/**",
                                 "/code**/",

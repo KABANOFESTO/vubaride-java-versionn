@@ -32,7 +32,7 @@
         </nav>
     </div>
     <div class="container-fluid booking py-5" id="booking">
-        <br/><br/><br/><br/><br/>
+        <br /><br /><br /><br /><br />
         <div class="container py-5">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6">
@@ -70,14 +70,16 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <select class="form-select bg-white border-0" id="select1">
-                                        <option value="1">Muhanga-Kigali</option>
-                                        <option value="2">Kigali-Musanze</option>
-                                        <option value="3">Kigali-Gisenyi</option>
+                                    <select class="form-select bg-white border-0" id="select1" required>
+                                        <option value="" disabled selected>Select Destination</option>
+                                        <option value="Muhanga-Kigali">Muhanga-Kigali</option>
+                                        <option value="Kigali-Musanze">Kigali-Musanze</option>
+                                        <option value="Kigali-Gisenyi">Kigali-Gisenyi</option>
                                     </select>
                                     <label for="select1">Destination</label>
                                 </div>
                             </div>
+
                             <div class="col-md-12">
                                 <div class="form-floating date">
                                     <input type="time" class="form-control bg-white border-0" id="time"
@@ -235,11 +237,11 @@
                     // Initialize jsPDF
                     const { jsPDF } = window.jspdf;
                     const pdf = new jsPDF();
-                    
+
                     // Add ticket details
                     pdf.setFontSize(16);
                     pdf.text('VubaRide Ticket', 105, 20, { align: 'center' });
-                    
+
                     pdf.setFontSize(12);
                     const details = [
                         `Name: ${bookingResult.userId}`,
@@ -264,7 +266,7 @@
                         try {
                             const barcodeCanvas = document.createElement('canvas');
                             barcodeContainer.appendChild(barcodeCanvas);
-                            
+
                             JsBarcode(barcodeCanvas, bookingResult.bookingCode, {
                                 format: "CODE128",
                                 width: 2,
@@ -277,7 +279,7 @@
                             // Convert canvas to image and add to PDF
                             const barcodeImage = barcodeCanvas.toDataURL('image/png');
                             pdf.addImage(barcodeImage, 'PNG', 20, 120, 170, 50);
-                            
+
                             // Clean up
                             document.body.removeChild(barcodeContainer);
                             resolve();

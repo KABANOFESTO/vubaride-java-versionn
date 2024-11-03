@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import rw.transport.vubaride.service.BookingService;
 import rw.transport.vubaride.model.*;
 
-
 import java.util.List;
 
 @RestController
@@ -52,5 +51,12 @@ public class BookingController {
         bookingService.deleteBooking(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-}
 
+    @PutMapping("/bookings/{id}/status")
+    public ResponseEntity<Booking> updateBookingStatus(
+            @PathVariable Long id,
+            @RequestBody BookingStatus status) {
+        Booking updatedBooking = bookingService.updateBookingStatus(id, status);
+        return ResponseEntity.ok(updatedBooking);
+    }
+}

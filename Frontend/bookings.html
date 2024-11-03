@@ -10,41 +10,41 @@
         .container {
             margin-top: 20px;
         }
-        
+
         .card-title {
             font-weight: 600;
         }
-        
+
         .filter-section {
             display: flex;
             align-items: center;
             gap: 10px;
             flex-wrap: wrap;
         }
-        
+
         .table th,
         .table td {
             vertical-align: middle;
         }
-        
+
         .pagination-container {
             display: flex;
             justify-content: center;
             margin-top: 15px;
         }
-        
+
         .nav-buttons {
             display: flex;
             justify-content: space-between;
             margin-bottom: 15px;
         }
-        
+
         .search-loading {
             display: none;
             margin-left: 8px;
             font-size: 18px;
         }
-        
+
         .search-suggestions {
             display: none;
             border: 1px solid #ccc;
@@ -54,25 +54,44 @@
             width: 100%;
             max-width: 300px;
         }
-        
+
         .suggestion-item {
             padding: 10px;
             cursor: pointer;
         }
-        
+
         .suggestion-item:hover {
             background-color: #f0f0f0;
         }
-        
+
         .clear-search {
             cursor: pointer;
             display: none;
             margin-left: 10px;
         }
-        
+
         .highlight {
             font-weight: bold;
             color: blue;
+        }
+
+        .badge {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .badge:hover {
+            opacity: 0.8;
+        }
+
+        .badge-warning {
+            color: #000;
+            background-color: #ffc107;
+        }
+
+        .badge-success {
+            background-color: #28a745;
+            color: #fff;
         }
     </style>
 </head>
@@ -87,13 +106,15 @@
             <div class="card-body">
                 <h5 class="card-title">Recent Bookings</h5>
                 <div class="filter-section mb-4">
-                    <input type="text" id="searchInput" class="form-control" placeholder="Search by Name or Code" onkeyup="filterAndPaginate()">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search by Name or Code"
+                        onkeyup="filterAndPaginate()">
                     <span class="clear-search" onclick="clearSearch()">❌</span>
                     <div class="search-suggestions" id="searchSuggestions"></div>
                     <select id="destinationFilter" class="form-control" onchange="filterAndPaginate()">
                         <option value="">Filter by Destination</option>
-                        <option value="Kigali-Muhanga">Kigali-Muhanga</option>
-                        <option value="Kigali-Huye">Kigali-Huye</option>
+                        <option value="Muhanga-Kigali">Muhanga-Kigali</option>
+                        <option value="Kigali-Musanze">Kigali-Musanze</option>
+                        <option value="Kigali-Gisenyi">Kigali-Gisenyi</option>
                     </select>
                     <select id="sortBy" class="form-control" onchange="sortBookings()">
                         <option value="">Sort by</option>
@@ -161,11 +182,58 @@
                         <td>${booking.routeId}</td>
                         <td>${booking.bookingDate}</td>
                         <td>${booking.bookingTime}</td>
-                        <td><span class="badge ${booking.status === 'Confirmed' ? 'badge-success' : 'badge-warning'}">${booking.status}</span></td>
+                        <td>
+                            <span 
+                                class="badge ${booking.status === 'CONFIRMED' ? 'badge-success' : 'badge-warning'}"
+                                style="cursor: pointer;"
+                                onclick="updateStatus(${booking.id}, '${booking.status}')"
+                            >
+                                ${booking.status}
+                            </span>
+                        </td>
                     </tr>`;
                 tableBody.innerHTML += row;
             });
             document.getElementById('pageIndicator').innerText = `Page ${currentPage} of ${Math.ceil(filteredBookings.length / rowsPerPage)}`;
+        }
+
+        async function updateStatus(bookingId, currentStatus) {
+            if (currentStatus === 'CONFIRMED') {
+                return; // Don't allow changing back from CONFIRMED
+            }
+
+            try {
+                const response = await fetch(`http://localhost:8081/api/bookings/${bookingId}/status`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+                    },
+                    body: JSON.stringify('CONFIRMED')
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to update status');
+                }
+
+                // Update the local data
+                const updatedBooking = await response.json();
+                bookings = bookings.map(booking =>
+                    booking.id === bookingId ? { ...booking, status: 'CONFIRMED' } : booking
+                );
+                filteredBookings = filteredBookings.map(booking =>
+                    booking.id === bookingId ? { ...booking, status: 'CONFIRMED' } : booking
+                );
+
+                // Refresh the display
+                displayBookings();
+
+                // Show success message
+                alert('Booking status updated successfully!');
+            } catch (error) {
+                console.error('Error updating status:', error);
+                alert('Failed to update booking status. Please try again.');
+            }
         }
 
         function filterAndPaginate() {

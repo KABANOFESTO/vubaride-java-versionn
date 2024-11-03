@@ -1,10 +1,6 @@
 package rw.transport.vubaride.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import java.util.UUID;
 
 @Entity
@@ -15,23 +11,27 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String userId; // ID of the user making the booking
-    private String routeId; // ID of the selected route
+    private String userId;
+    private String routeId;
     private String seatNumber;
     private String bookingCode;
-
     private String bookingDate;
     private String bookingTime;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private BookingStatus status = BookingStatus.PENDING;  // Default value
+
     public Booking() {
         this.bookingCode = generateBookingCode();
+        this.status = BookingStatus.PENDING;  // Explicitly set in constructor
     }
 
     private String generateBookingCode() {
         return "VR-" + UUID.randomUUID().toString().substring(0, 8).toUpperCase();
     }
 
-    // Getters and Setters
+    // Existing getters and setters...
     public Long getId() {
         return id;
     }
@@ -82,5 +82,13 @@ public class Booking {
 
     public void setBookingTime(String bookingTime) {
         this.bookingTime = bookingTime;
+    }
+    // Add new getter and setter for status
+    public BookingStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(BookingStatus status) {
+        this.status = status;
     }
 }

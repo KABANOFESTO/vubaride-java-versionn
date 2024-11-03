@@ -3,6 +3,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rw.transport.vubaride.repository.BookingRepository;
 import rw.transport.vubaride.model.Booking;
+import rw.transport.vubaride.model.BookingStatus;
 
 
 import java.util.List;
@@ -36,6 +37,21 @@ public class BookingService {
 
     public void deleteBooking(Long id) {
         bookingRepository.deleteById(id);
+    }
+    public Booking updateBookingStatus(Long bookingId, BookingStatus newStatus) {
+        Booking booking = bookingRepository.findById(bookingId)
+            .orElseThrow(() -> new RuntimeException("Booking not found"));
+        
+        booking.setStatus(newStatus);
+        return bookingRepository.save(booking);
+    }
+
+    public List<Booking> getPendingBookings() {
+        return bookingRepository.findByStatus(BookingStatus.PENDING);
+    }
+
+    public List<Booking> getBookingsByUserAndStatus(String userId, BookingStatus status) {
+        return bookingRepository.findByUserIdAndStatus(userId, status);
     }
 }
 
